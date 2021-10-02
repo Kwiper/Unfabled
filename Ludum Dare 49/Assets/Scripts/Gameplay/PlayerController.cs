@@ -26,6 +26,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float busyMaxTime; // Time between casting spell and being able to select a new spell
     float busyTime;
 
+
+    //debug purposes
+    [SerializeField] List<GameObject> bulletTypes;
+    [SerializeField] int testBulletType;
+    [SerializeField] Transform firePoint;
+
     Vector2 mousePosition;
 
     Element trigger1; // First element selected
@@ -103,6 +109,14 @@ public class PlayerController : MonoBehaviour
 
             // Fire
             if (Input.GetMouseButtonDown(0)) { // Left click
+                //set bullet
+                GameObject bulletPrefab = bulletTypes[testBulletType];
+
+                //fire bullet
+                Vector3 targetDir = cursor.transform.position - firePoint.position;
+                Quaternion bulletRot = Quaternion.LookRotation(Vector3.forward, targetDir);
+                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, bulletRot);
+
                 mousePosition = worldPosition; // Use mousePosition as the trajectory of the spell
                 Debug.Log("Switching to Busy state");
                 busyTime = busyMaxTime;
@@ -176,7 +190,6 @@ public class PlayerController : MonoBehaviour
             // until we actually have spells.
             trigger1.Triggered = false;
             trigger2.Triggered = false;
-
 
             trigger1 = null; 
             trigger2 = null;
