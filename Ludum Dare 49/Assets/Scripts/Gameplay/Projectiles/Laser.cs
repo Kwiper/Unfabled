@@ -9,6 +9,8 @@ public class Laser : MonoBehaviour
     [SerializeField] float growRateY;
     [SerializeField] float growAccel;
     [SerializeField] float duration;
+    [SerializeField] float damage;
+    [SerializeField] float knockback;
     Vector2 growRate;
 
     // Start is called before the first frame update
@@ -23,10 +25,20 @@ public class Laser : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (sr.size.y <= 5)
+        duration -= Time.deltaTime;
+        if (duration > 0)
         {
             sr.size += growRate; //grow rate
             growRate = new Vector2(growRate.x * growAccel, growRate.y * growAccel); //grow acceleration
         }
+        else
+        {
+            transform.position += transform.up * growRate.magnitude;
+        }
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

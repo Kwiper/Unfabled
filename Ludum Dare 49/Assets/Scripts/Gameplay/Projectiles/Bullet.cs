@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] float bulletSpeed;
     [SerializeField] float damage;
     [SerializeField] float knockback;
+    [SerializeField] float verticalNudge;
 
     //parameters
     [SerializeField] bool lingering;
@@ -18,7 +19,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = transform.up * bulletSpeed;
+        rb.velocity = transform.up * bulletSpeed + transform.right * verticalNudge;
     }
 
     // Update is called once per frame
@@ -29,10 +30,21 @@ public class Bullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (applyPhysics)
+        float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Enemy")
         {
-            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            //collision.gameObject.GetComponentInParent<Enemy>().TakeDamage(damage); //enemy takes damage
+            if(!lingering) Destroy(gameObject);
         }
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }
