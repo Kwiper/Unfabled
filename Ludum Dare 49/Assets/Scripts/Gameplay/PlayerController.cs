@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] Canvas menuCanvas; // Menu selection canvas
     [SerializeField] List<Element> menuChoices; // List of the selection UI stuff
+    [SerializeField] Cursor cursor; // Cursor
 
     [SerializeField] Image timerBar;
 
@@ -22,9 +23,21 @@ public class PlayerController : MonoBehaviour
     float spellChooseTime; // Time that counts down
     [SerializeField] float bufferMaxTime;
     float bufferTime; // Time for buffer state
+    [SerializeField] float busyMaxTime; // Time between casting spell and being able to select a new spell
+    float busyTime;
 
-    Element trigger1;
-    Element trigger2;
+    Vector2 mousePosition;
+
+    Element trigger1; // First element selected
+    Element trigger2; // Second element selected
+
+    /* FOR CASTING SPELLS:
+    - Make 4x4 2D array (index 0-3 both sides)
+    - Create a list of all the spell GameObjects
+    - In the 2D array, set the values of each cell to whatever corresponds to the index of the spell in the list.
+    - Get the cell by taking trigger1.Type and trigger2.Type
+    - Instantiate the spell
+    */
 
     PlayerState playerState; // Gets the player state enum
 
@@ -33,15 +46,13 @@ public class PlayerController : MonoBehaviour
         playerState = PlayerState.Idle;
     }
 
-
-
     private void Update()
     {
         if (playerState == PlayerState.Idle)
         { // Player state idle
             spellChooseTime = spellChooseMaxTime;
 
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift)) // Press shift to open spell menu
             {
                 Debug.Log("Switching to spell choosing state");
                 menuCanvas.gameObject.SetActive(true);
@@ -62,7 +73,7 @@ public class PlayerController : MonoBehaviour
         {
             timerBar.rectTransform.localScale = new Vector3(GetTimerBarScale(), 1.0f, 1.0f);
 
-            ChooseElementsFromSpellList();
+            ChooseElementsFromSpellList(); // Logic to select the spells
 
             if (spellChooseTime <= 0)
             {
@@ -86,9 +97,30 @@ public class PlayerController : MonoBehaviour
         else if (playerState == PlayerState.CastingSpell)
         {
             // Aiming
+            cursor.gameObject.SetActive(true);
+            Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+
+            // Fire
+            if (Input.GetMouseButtonDown(0)) { // Left click
+                mousePosition = worldPosition; // Use mousePosition as the trajectory of the spell
+                Debug.Log("Switching to Busy state");
+                busyTime = busyMaxTime;
+                playerState = PlayerState.Busy;
+            }
+
         }
-        else if (playerState == PlayerState.Busy) { 
-            // Cast the spell, switch back to Idle
+        else if (playerState == PlayerState.Busy) {
+            // Cast the spell, then after a slight delay switch back to Idle
+            Debug.Log("Kaboom!"); // Testing for spell cast
+
+            cursor.gameObject.SetActive(false);
+            busyTime -= Time.deltaTime;
+
+            if (busyTime <= 0) {
+                Debug.Log("Switching to Idle state");
+                playerState = PlayerState.Idle;
+            }
         }
     }
 
@@ -101,7 +133,7 @@ public class PlayerController : MonoBehaviour
             }
             else {
                 trigger2 = menuChoices[0];
-                menuChoices[0].Triggered = true;
+                trigger2.Triggered = true;
             }
         }        
         else if (Input.GetKeyDown(KeyCode.D) && !menuChoices[1].Triggered) { // Select the right element
@@ -112,7 +144,7 @@ public class PlayerController : MonoBehaviour
             }
             else {
                 trigger2 = menuChoices[1];
-                menuChoices[1].Triggered = true;
+                trigger2.Triggered = true;
             }
         }        
         else if (Input.GetKeyDown(KeyCode.S) && !menuChoices[2].Triggered) { // Select the bottom element
@@ -123,7 +155,7 @@ public class PlayerController : MonoBehaviour
             }
             else {
                 trigger2 = menuChoices[2];
-                menuChoices[2].Triggered = true;
+                trigger2.Triggered = true;
             }
         }        
         else if (Input.GetKeyDown(KeyCode.A) && !menuChoices[3].Triggered) { // Select the left element
@@ -142,9 +174,13 @@ public class PlayerController : MonoBehaviour
         {
             // Get the spell from a 2D array with trigger1 and trigger 2 first, then execute the rest of the code. This can't be done
             // until we actually have spells.
+            trigger1.Triggered = false;
+            trigger2.Triggered = false;
 
-            trigger1 = null;
+
+            trigger1 = null; 
             trigger2 = null;
+
 
             menuCanvas.gameObject.SetActive(false);
 
