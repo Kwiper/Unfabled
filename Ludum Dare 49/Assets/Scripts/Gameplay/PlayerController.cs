@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float busyMaxTime; // Time between casting spell and being able to select a new spell
     float busyTime;
 
+    GameObject bulletPrefab;
 
     //debug purposes
     [SerializeField] List<GameObject> bulletTypes;
@@ -109,8 +110,6 @@ public class PlayerController : MonoBehaviour
 
             // Fire
             if (Input.GetMouseButtonDown(0)) { // Left click
-                //set bullet
-                GameObject bulletPrefab = bulletTypes[testBulletType];
 
                 //fire bullet
                 Vector3 targetDir = cursor.transform.position - firePoint.position;
@@ -133,6 +132,7 @@ public class PlayerController : MonoBehaviour
 
             if (busyTime <= 0) {
                 Debug.Log("Switching to Idle state");
+                bulletPrefab = null; // reset bullet to null
                 playerState = PlayerState.Idle;
             }
         }
@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
                 trigger2 = menuChoices[0];
                 trigger2.Triggered = true;
             }
-        }        
+        }
         else if (Input.GetKeyDown(KeyCode.D) && !menuChoices[1].Triggered) { // Select the right element
             if (trigger1 == null)
             {
@@ -160,7 +160,7 @@ public class PlayerController : MonoBehaviour
                 trigger2 = menuChoices[1];
                 trigger2.Triggered = true;
             }
-        }        
+        }
         else if (Input.GetKeyDown(KeyCode.S) && !menuChoices[2].Triggered) { // Select the bottom element
             if (trigger1 == null)
             {
@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour
                 trigger2 = menuChoices[2];
                 trigger2.Triggered = true;
             }
-        }        
+        }
         else if (Input.GetKeyDown(KeyCode.A) && !menuChoices[3].Triggered) { // Select the left element
             if (trigger1 == null)
             {
@@ -186,12 +186,19 @@ public class PlayerController : MonoBehaviour
 
         if (trigger1 != null && trigger2 != null)
         {
-            // Get the spell from a 2D array with trigger1 and trigger 2 first, then execute the rest of the code. This can't be done
-            // until we actually have spells.
+
+            // Get the spell from a 2D array with trigger1 and trigger 2 first, then execute the rest of the code.
+            int bulletIndex = chart[trigger1.Type][trigger2.Type];
+            Debug.Log(bulletIndex);
+
+            bulletPrefab = bulletTypes[bulletIndex];
+            
+
+
             trigger1.Triggered = false;
             trigger2.Triggered = false;
 
-            trigger1 = null; 
+            trigger1 = null;
             trigger2 = null;
 
 
@@ -206,9 +213,19 @@ public class PlayerController : MonoBehaviour
     }
 
     float GetTimerBarScale() {
-        float normalizedTime = (float) spellChooseTime / spellChooseMaxTime;
+        float normalizedTime = (float)spellChooseTime / spellChooseMaxTime;
 
         return Mathf.Clamp(normalizedTime, 0, 1);
     }
+
+    static int[][] chart =
+{
+                         //FIR  WAT  WIN  EAR
+       /*FIRE */ new int[]{0,   1,   3,   6  },
+       /*WATER*/ new int[]{1,   2,   4,   7  },
+       /*WIND */ new int[]{3,   4,   5,   8  },
+       /*EARTH*/ new int[]{6,   7,   8,   9  },
+    };
+
 
 }
