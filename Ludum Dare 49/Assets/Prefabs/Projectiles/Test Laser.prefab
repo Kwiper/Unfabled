@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7263155671322473643}
   - component: {fileID: 9038578849093462348}
   m_Layer: 0
-  m_Name: Laser
+  m_Name: Test Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -0.01}
   m_SpriteTilingProperty:
     border: {x: 0.08, y: 0.41, z: 0.08, w: 0.71999997}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 0.32, y: 1.6}
     newSize: {x: 0.32, y: 1.08}
     adaptiveTilingThreshold: 0
@@ -123,5 +123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   growRateX: 0
-  growRateY: 0.01
-  growAccel: 1.05
+  growRateY: 0.02
+  growAccel: 1.1
+  duration: 0
