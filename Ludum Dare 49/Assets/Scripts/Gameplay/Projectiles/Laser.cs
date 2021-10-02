@@ -11,6 +11,9 @@ public class Laser : MonoBehaviour
     [SerializeField] float duration;
     [SerializeField] float damage;
     [SerializeField] float knockback;
+
+    [SerializeField] bool stayProjectile;
+    [SerializeField] float stayTimer;
     Vector2 growRate;
 
     // Start is called before the first frame update
@@ -18,7 +21,7 @@ public class Laser : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         sr.drawMode = SpriteDrawMode.Tiled;
-        sr.size = new Vector2(0.32f, 1.08f);
+        //sr.size = new Vector2(0.32f, 1.08f);
         growRate = new Vector2(growRateX, growRateY);
     }
 
@@ -33,7 +36,12 @@ public class Laser : MonoBehaviour
         }
         else
         {
-            transform.position += transform.up * growRate.magnitude;
+            if (stayProjectile) transform.position += transform.up * growRate.magnitude;
+            else
+            {
+                if (stayTimer > 0) stayTimer -= Time.deltaTime;
+                else Destroy(gameObject);
+            }
         }
     }
 

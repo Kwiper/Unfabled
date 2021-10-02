@@ -203,7 +203,6 @@ public class PlayerController : MonoBehaviour
         else {
             spellChooseTime -= Time.deltaTime;
         }
-    
     }
 
     float GetTimerBarScale() {

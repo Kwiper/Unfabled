@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] float damage;
     [SerializeField] float knockback;
     [SerializeField] float verticalNudge;
+    [SerializeField] bool randomizeNudge;
 
     //parameters
     [SerializeField] bool lingering;
@@ -19,6 +20,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (randomizeNudge) verticalNudge = Random.Range(-verticalNudge, verticalNudge);
         rb.velocity = transform.up * bulletSpeed + transform.right * verticalNudge;
     }
 

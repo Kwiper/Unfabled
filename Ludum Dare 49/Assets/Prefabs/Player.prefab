@@ -187,7 +187,17 @@ MonoBehaviour:
   spellChooseMaxTime: 1.5
   bufferMaxTime: 0.5
   busyMaxTime: 1
-  bulletTypes: []
+  bulletTypes:
+  - {fileID: 8061359691679131631, guid: d2714de619ffc0749b898b7701c94ddd, type: 3}
+  - {fileID: 4236590484142319634, guid: 5cd0eb7c1f21bb2469c2b3270396b27b, type: 3}
+  - {fileID: 6872044146443191679, guid: 2ebd7513148f52343b151c88516d43a3, type: 3}
+  - {fileID: 3986263087681569984, guid: 3d9d482cf0384924da5a16d911706a3f, type: 3}
+  - {fileID: 254936668985073651, guid: 72e28ccb5d84c874bbbfff7a4aa76c22, type: 3}
+  - {fileID: 4355565963475988086, guid: f02245df49fbcb143b33e1099493ea05, type: 3}
+  - {fileID: 7534937841694177285, guid: 8fc5c28fb58e85348a41d13f7c105db3, type: 3}
+  - {fileID: 2943744598165036405, guid: 669a790603c05c74880a7aba3e56b449, type: 3}
+  - {fileID: 3111557721271082699, guid: 6a4446d29905af9469f1e699c9523e87, type: 3}
+  - {fileID: 7704148622853196509, guid: 684280907764dee4cac3accac14227a5, type: 3}
   testBulletType: 0
   firePoint: {fileID: 5904706876310355552}
 --- !u!1 &6473123025814032211
