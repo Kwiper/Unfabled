@@ -251,5 +251,6 @@ public class PlayerController : MonoBehaviour
        /*EARTH*/ new int[]{6,   7,   8,   9  },
     };
 
+    public float Health => health;
 
 }
