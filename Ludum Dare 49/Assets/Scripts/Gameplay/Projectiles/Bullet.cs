@@ -13,6 +13,8 @@ public class Bullet : MonoBehaviour
     //parameters
     [SerializeField] bool lingering;
     [SerializeField] bool applyPhysics;
+    [SerializeField] bool bounce;
+    [SerializeField] bool goThroughGround;
 
     private Rigidbody2D rb;
 
@@ -43,6 +45,8 @@ public class Bullet : MonoBehaviour
             //collision.gameObject.GetComponentInParent<Enemy>().TakeDamage(damage); //enemy takes damage
             if(!lingering) Destroy(gameObject);
         }
+        if (bounce && col.gameObject.tag == "Ground" && rb.velocity.y < 0) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * -1);
+        else if(!goThroughGround) Destroy(gameObject);
     }
 
     void OnBecameInvisible()
