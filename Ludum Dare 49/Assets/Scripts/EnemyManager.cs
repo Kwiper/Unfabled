@@ -32,10 +32,12 @@ public class EnemyManager : MonoBehaviour
 
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player");
+        if(!target) target = GameObject.FindGameObjectWithTag("Player");
         rigidBody = GetComponent<Rigidbody2D>();
         rigidBody.velocity = new Vector2(-baseSpeed, 0);
         stateChangedTime = Time.realtimeSinceStartup;
+
+        if(!isGravityEnabled) rigidBody.gravityScale = 0;
 
         iFrames = maxIFrames;
     }

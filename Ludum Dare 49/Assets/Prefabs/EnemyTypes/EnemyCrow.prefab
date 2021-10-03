@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1433286044023370846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.11, y: -0.1, z: 0}
-  m_LocalScale: {x: 0.07483406, y: 0.031485416, z: 1}
+  m_LocalScale: {x: 0.018588781, y: 0.014162141, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -47,10 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db297ba0ca2c20246abed1455abb3b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseSpeed: 2
-  isGravityEnabled: 1
+  baseSpeed: 1.5
+  isGravityEnabled: 0
   target: {fileID: 0}
   timeSinceLastChange: 0
+  health: 0
+  maxIFrames: 0
 --- !u!114 &3633830793236904528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,6 +65,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52ba885238580f94a9da736c746f51fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveTime: 1
+  honeInDistance: 2
 --- !u!212 &5029594151804313447
 SpriteRenderer:
   m_ObjectHideFlags: 0
