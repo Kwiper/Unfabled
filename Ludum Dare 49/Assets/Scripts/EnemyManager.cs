@@ -136,12 +136,11 @@ public class EnemyManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        if(col.gameObject.tag == "Ground")
+        if (col.gameObject.tag == "Ground")
         {
-            Debug.Log("Colliding");
             if (rigidBody.velocity.y < 0) rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
             var groundY = col.gameObject.GetComponent<CompositeCollider2D>().bounds.max.y;
-            var colliderSize = GetComponent<BoxCollider2D>().size.y * transform.localScale.y;
+            var colliderSize = GetComponent<BoxCollider2D>().bounds.size.y;
             transform.position = new Vector3(transform.position.x, groundY + colliderSize / 2, transform.position.z);
         }
     }

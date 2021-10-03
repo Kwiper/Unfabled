@@ -8,7 +8,7 @@ public class GroundLayerManager : MonoBehaviour
     public int layer;
 
 
-    private Tilemap spriteRd;
+    private TilemapRenderer spriteRd;
     private Vector3 tileSize;
     private Vector3 originPos;
 
@@ -20,11 +20,9 @@ public class GroundLayerManager : MonoBehaviour
         originPos.z = -layer;
         transform.localPosition = originPos;
 
-        spriteRd = GetComponent<Tilemap>();
+        spriteRd = GetComponent<TilemapRenderer>();
 
-        tileSize = spriteRd.size;
-
-
+        tileSize = spriteRd.bounds.size;
     }
 
     // Update is called once per frame

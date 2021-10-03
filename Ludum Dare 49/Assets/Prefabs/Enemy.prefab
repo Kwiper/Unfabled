@@ -65,9 +65,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 823227d079f07e4469d81272db079bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idleTime: 0
-  jumpTime: 0
-  jumpDistance: 0
+  idleTime: 0.5
+  jumpTime: 1.5
+  jumpDistance: 4
 --- !u!212 &803093777945836790
 SpriteRenderer:
   m_ObjectHideFlags: 0

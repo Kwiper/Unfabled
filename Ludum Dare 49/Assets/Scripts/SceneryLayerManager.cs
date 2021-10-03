@@ -24,8 +24,6 @@ public class SceneryLayerManager : MonoBehaviour
         spriteRd = GetComponent<SpriteRenderer>();
         
         tileSize = spriteRd.sprite.bounds.size;
-
-        
     }
 
     // Update is called once per frame
