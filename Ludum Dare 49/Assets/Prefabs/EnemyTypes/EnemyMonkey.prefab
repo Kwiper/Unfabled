@@ -67,8 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleTime: 1
-  jumpTime: 2
-  jumpDistance: 3
+  jumpTime: 1.5
+  jumpDistance: 5
 --- !u!212 &2254262560146076212
 SpriteRenderer:
   m_ObjectHideFlags: 0
