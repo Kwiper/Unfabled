@@ -12,8 +12,12 @@ public class Bullet : MonoBehaviour
     [SerializeField] bool applyPhysics;
     [SerializeField] bool bounce;
     [SerializeField] bool goThroughGround;
+    public bool toDestroy;
 
     [SerializeField] AudioSource bounceSource;
+
+    //particle
+    [SerializeField] ParticleSystem bounceEffect;
 
     private Rigidbody2D rb;
 
@@ -35,6 +39,7 @@ public class Bullet : MonoBehaviour
     {
         float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (toDestroy) GetComponent<ProjectileData>().DestroyBullet(0f);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -49,12 +54,12 @@ public class Bullet : MonoBehaviour
                 bounceSource.Play();
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * -1);
             } 
-            else if (!goThroughGround) Destroy(gameObject);
+            else if (!goThroughGround) GetComponent<ProjectileData>().DestroyBullet(0f);
         }
     }
 
     void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        GetComponent<ProjectileData>().DestroyBullet(1f);
     }
 }

@@ -167,7 +167,7 @@ public class EnemyManager : MonoBehaviour
             applyKnockback(new Vector2(col.gameObject.GetComponent<ProjectileData>().getKnockback(), 0f), maxIFrames);
             health -= col.gameObject.GetComponent<ProjectileData>().getDamage();
             Debug.Log("Enemy Health: " + health);
-            if (!col.gameObject.GetComponent<ProjectileData>().isLingering()) Destroy(col.gameObject);
+            if (!col.gameObject.GetComponent<ProjectileData>().isLingering()) col.gameObject.GetComponent<ProjectileData>().toDestroy = true;
         }
         if (col.gameObject.tag == "Player")
         {
