@@ -143,7 +143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5409241458964459966, guid: 955015949fcc3914d9a9d86ff59ee855, type: 3}
       propertyPath: verticalNudge
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6335712464414420742, guid: 955015949fcc3914d9a9d86ff59ee855, type: 3}
       propertyPath: m_RootOrder
@@ -271,7 +271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5409241458964459966, guid: 955015949fcc3914d9a9d86ff59ee855, type: 3}
       propertyPath: verticalNudge
-      value: -5
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 6335712464414420742, guid: 955015949fcc3914d9a9d86ff59ee855, type: 3}
       propertyPath: m_RootOrder
