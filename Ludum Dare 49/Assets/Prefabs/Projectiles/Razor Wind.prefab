@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f19509505d5a2b4fb2150be94f4484e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
-  knockback: 5
+  damage: 25
+  knockback: 8
   lingering: 1
 --- !u!82 &3685046815556395047
 AudioSource:

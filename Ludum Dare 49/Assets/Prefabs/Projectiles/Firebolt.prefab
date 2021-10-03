@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f19509505d5a2b4fb2150be94f4484e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 50
   knockback: 3
   lingering: 0
 --- !u!82 &-8999321908646565684

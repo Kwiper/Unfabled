@@ -86,6 +86,8 @@ public class EnemyManager : MonoBehaviour
             invincible = false;
             iFrames = maxIFrames;
         }
+
+        //if (health < 0) Destroy(gameObject); //change to activate death anim later
     }
 
     public void setState(EnemyState s){
@@ -125,11 +127,12 @@ public class EnemyManager : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Projectile")
+        if (col.gameObject.tag == "Projectile" && !invincible)
         {
             invincible = true;
             applyKnockback(new Vector2(col.gameObject.GetComponent<ProjectileData>().getKnockback(), 0f), maxIFrames);
             health -= col.gameObject.GetComponent<ProjectileData>().getDamage();
+            Debug.Log("Enemy Health: " + health);
             if (!col.gameObject.GetComponent<ProjectileData>().isLingering()) Destroy(col.gameObject);
         }
         if (col.gameObject.tag == "Player")

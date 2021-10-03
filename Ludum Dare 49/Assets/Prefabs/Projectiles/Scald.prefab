@@ -127,7 +127,7 @@ MonoBehaviour:
   growRateX: 0
   growRateY: 2
   growAccel: 1.1
-  duration: 0.5
+  duration: 0.49
   stayProjectile: 1
   stayTimer: 0
 --- !u!114 &-8983431588015841830
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f19509505d5a2b4fb2150be94f4484e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 20
   knockback: 3
   lingering: 1
 --- !u!82 &5826727078363125773

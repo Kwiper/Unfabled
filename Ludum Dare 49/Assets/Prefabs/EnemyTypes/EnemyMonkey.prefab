@@ -51,8 +51,8 @@ MonoBehaviour:
   isGravityEnabled: 1
   target: {fileID: 0}
   timeSinceLastChange: 0
-  health: 0
-  maxIFrames: 0
+  health: 30
+  maxIFrames: 0.25
 --- !u!114 &1869014589088704407
 MonoBehaviour:
   m_ObjectHideFlags: 0
