@@ -127,7 +127,6 @@ public class EnemyManager : MonoBehaviour
         if (col.gameObject.tag == "Projectile")
         {
             invincible = true;
-            Debug.Log("Colliding");
             applyKnockback(new Vector2(col.gameObject.GetComponent<ProjectileData>().getKnockback(), 0f), maxIFrames);
             health -= col.gameObject.GetComponent<ProjectileData>().getDamage();
             if (!col.gameObject.GetComponent<ProjectileData>().isLingering()) Destroy(col.gameObject);
@@ -135,6 +134,14 @@ public class EnemyManager : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             Destroy(gameObject);
+        }
+        if(col.gameObject.tag == "Ground")
+        {
+            if (rigidBody.velocity.y < 0) rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
+            var groundY = col.gameObject.transform.position.y;
+            var groundScaleY = col.gameObject.transform.localScale.y;
+            var colliderSize = GetComponent<BoxCollider2D>().size.y * transform.localScale.y;
+            transform.position = new Vector3(transform.position.x, groundY + groundScaleY / 2 + colliderSize / 2, transform.position.z);
         }
     }
 
