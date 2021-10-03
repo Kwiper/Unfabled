@@ -744,7 +744,7 @@ PrefabInstance:
       objectReference: {fileID: 604331170}
     - target: {fileID: 6473123025691563605, guid: 85b4e9a15065e9f438f2b8a44a973979, type: 3}
       propertyPath: testBulletType
-      value: 4
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85b4e9a15065e9f438f2b8a44a973979, type: 3}
