@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Cursor cursor; // Cursor
 
     [SerializeField] Image timerBar;
+    [SerializeField] Image hpBar;
 
     [SerializeField] float spellChooseMaxTime; // Max time for buffer
     float spellChooseTime; // Time that counts down
@@ -61,6 +62,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        hpBar.rectTransform.localScale = new Vector3(GetNormalizedHP(), 1.0f, 1.0f);
+
         if (playerState == PlayerState.Idle)
         { // Player state idle
             spellChooseTime = spellChooseMaxTime;
@@ -231,6 +234,12 @@ public class PlayerController : MonoBehaviour
         float normalizedTime = (float)spellChooseTime / spellChooseMaxTime;
 
         return Mathf.Clamp(normalizedTime, 0, 1);
+    }
+
+    float GetNormalizedHP() {
+        float normalizedHP = (float)health / maxHealth;
+
+        return Mathf.Clamp(normalizedHP, 0, 1);
     }
 
     static int[][] chart =

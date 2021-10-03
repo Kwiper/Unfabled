@@ -680,6 +680,7 @@ MonoBehaviour:
   - {fileID: 6473123026059311525}
   cursor: {fileID: 6473123026127335172}
   timerBar: {fileID: 6473123025814032209}
+  hpBar: {fileID: 0}
   spellChooseMaxTime: 1.5
   bufferMaxTime: 0.5
   busyMaxTime: 1
@@ -711,7 +712,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.11670059}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -722,7 +723,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.5}
+  m_Size: {x: 1, y: 2.2665987}
   m_EdgeRadius: 0
 --- !u!1 &6473123025814032211
 GameObject:
