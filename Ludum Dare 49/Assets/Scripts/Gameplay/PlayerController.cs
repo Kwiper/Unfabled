@@ -119,6 +119,8 @@ public class PlayerController : MonoBehaviour
 
             if (spellChooseTime <= 0)
             {
+
+                health -= 2f;
                 menuCanvas.gameObject.SetActive(false);
                 Debug.Log("Switching to Buffer state");
                 bufferTime = bufferMaxTime;
