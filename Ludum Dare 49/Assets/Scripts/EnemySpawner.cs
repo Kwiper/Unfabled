@@ -6,12 +6,14 @@ using UnityEngine;
 
 
 public struct EnemyWave {
-    public EnemyWave(Action s, float sd){
+    public EnemyWave(float ds, float de, Action s){
         spawn = s;
-        spawnDuration = sd;
+        delayStart = ds;
+        delayEnd = de;
     }
     public Action spawn;
-    public float spawnDuration;
+    public float delayStart;
+    public float delayEnd;
 
 }
 
@@ -27,48 +29,52 @@ public class EnemySpawner : MonoBehaviour
 
     public int level = 0;
     public float levelIncreasePeriod;
-    private float timeSinceSpawn = float.PositiveInfinity;
+    private float timeSinceSpawn = 0;
     private float spawnerLifetime = 0;
     private EnemyWave currentWave;
+    private EnemyWave nextWave;
 
     void Start()
     {
         EnemyWave[] level0 = new EnemyWave[]{
-            new EnemyWave(() => spawnGuardSwarm(1), 7),
+            new EnemyWave(7, 1, () => spawnGuardSwarm(1)),
         };
 
         EnemyWave[] level1 = new EnemyWave[]{
-            new EnemyWave(() => spawnGuardSwarm(2), 7),
-            new EnemyWave(() => spawnMonkeySwarm(1), 7),
+            new EnemyWave(1, 7, () => spawnGuardSwarm(2)),
+            new EnemyWave(1, 7, () => spawnMonkeySwarm(1)),
         };
 
         EnemyWave[] level2 = new EnemyWave[]{
-            new EnemyWave(() => spawnGuardSwarm(2),6),
-            new EnemyWave(() => spawnMonkeySwarm(1), 5),
-            new EnemyWave(() => spawnBearSwarm(1), 10),
+            new EnemyWave(1, 6, () => spawnGuardSwarm(2)),
+            new EnemyWave(1, 5, () => spawnMonkeySwarm(1)),
+            new EnemyWave(1, 10, () => spawnBearSwarm(1)),
         };
 
         EnemyWave[] level3 = new EnemyWave[]{
-            new EnemyWave(() => spawnCrowSwarm(1), 5),
-            new EnemyWave(() => spawnMonkeySwarm(2), 2),
-            new EnemyWave(() => spawnGuardSwarm(2),6),
-            new EnemyWave(() => spawnBearSwarm(1), 10),
+            new EnemyWave(1, 5, () => spawnCrowSwarm(1)),
+            new EnemyWave(1, 2, () => spawnMonkeySwarm(2)),
+            new EnemyWave(1,6, () => spawnGuardSwarm(2)),
+            new EnemyWave(1, 10, () => spawnBearSwarm(1)),
         };
 
         EnemyWave[] level4 = new EnemyWave[]{
-            new EnemyWave(() => spawnCrowSwarm(1), 5),
-            new EnemyWave(() => spawnBeeSwarm(2), 10),
-            new EnemyWave(() => spawnBearSwarm(1), 7),
-            new EnemyWave(() => spawnMonkeyChasing(5), 20),
+            new EnemyWave(1, 5, () => spawnCrowSwarm(1)),
+            new EnemyWave(1, 10, () => spawnBeeSwarm(2)),
+            new EnemyWave(1, 7, () => spawnBearSwarm(1)),
+            new EnemyWave(1, 20, () => spawnMonkeyChasing(5)),
         };
 
         EnemyWave[] level5 = new EnemyWave[]{
-            new EnemyWave(() => spawnHoneyBear(1), 10),
-            new EnemyWave(() => spawnMonkeyChasing(2), 7),
-            new EnemyWave(() => spawnGuardChasing(2), 7),
+            new EnemyWave(1, 10, () => spawnHoneyBear(1)),
+            new EnemyWave(1, 7, () => spawnMonkeyChasing(2)),
+            new EnemyWave(1, 7, () => spawnGuardChasing(2)),
         };
 
         waves = new EnemyWave[][]{level0, level1, level2, level3, level4, level5};
+
+        currentWave = level0[Random.Range(0, level0.Length)];
+        nextWave = level0[Random.Range(0, level0.Length)];
 
     }
 
@@ -82,21 +88,17 @@ public class EnemySpawner : MonoBehaviour
         level = Mathf.Min( Mathf.FloorToInt(spawnerLifetime / levelIncreasePeriod), waves.Length - 1);
 
 
-        if(timeSinceSpawn >= currentWave.spawnDuration){
+        if(timeSinceSpawn >= currentWave.delayEnd + nextWave.delayStart){
             EnemyWave[] currentLevelWaves = waves[level];
 
-            EnemyWave newWave = currentLevelWaves[Random.Range(0, currentLevelWaves.Length)];
+            currentWave = nextWave;
+            nextWave = currentLevelWaves[Random.Range(0, currentLevelWaves.Length)];
 
-            executeEnemyWave(newWave);
+            timeSinceSpawn = 0;
+            currentWave.spawn();
         }
     }
 
-    private void executeEnemyWave(EnemyWave wave){
-        timeSinceSpawn = 0;
-        currentWave = wave;
-
-        wave.spawn();
-    }
     
     private GameObject spawnEnemy(GameObject e, Vector2 offset){
 
