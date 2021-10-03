@@ -39,6 +39,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float health;
     [SerializeField] float maxHealth;
 
+    //Animations
+    [SerializeField] List<Sprite> walkingSprites;
+    [SerializeField] List<Sprite> castingSprites;
+
+    // Animation States
+    SpriteAnimator walkAnim;
+    SpriteAnimator castAnim;
+    SpriteAnimator currentAnim;
+    [SerializeField] SpriteRenderer spriteRenderer;
+
     Vector2 mousePosition;
 
     Element trigger1; // First element selected
@@ -60,9 +70,19 @@ public class PlayerController : MonoBehaviour
         health = maxHealth;
     }
 
+    private void Start()
+    {
+        walkAnim = new SpriteAnimator(walkingSprites, spriteRenderer, 0.16f);
+        castAnim = new SpriteAnimator(castingSprites, spriteRenderer, 0.16f);
+
+        currentAnim = walkAnim;
+    }
+
     private void Update()
     {
         hpBar.rectTransform.localScale = new Vector3(GetNormalizedHP(), 1.0f, 1.0f);
+
+        currentAnim.HandleUpdate();
 
         if (playerState == PlayerState.Idle)
         { // Player state idle
@@ -131,6 +151,7 @@ public class PlayerController : MonoBehaviour
             // Fire
             if (Input.GetMouseButtonDown(0)) { // Left click
                 menuCanvas.gameObject.SetActive(false);
+                currentAnim = castAnim;
 
                 //fire bullet
                 Vector3 targetDir = cursor.transform.position - firePoint.position;
@@ -152,6 +173,7 @@ public class PlayerController : MonoBehaviour
             busyTime -= Time.deltaTime;
 
             if (busyTime <= 0) {
+                currentAnim = walkAnim;
                 Debug.Log("Switching to Idle state");
                 bulletPrefab = null; // reset bullet to null
                 playerState = PlayerState.Idle;
