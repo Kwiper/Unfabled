@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4616412121076573458}
   m_Layer: 0
   m_Name: Scald
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,3 +129,4 @@ MonoBehaviour:
   damage: 0
   knockback: 0
   stayProjectile: 1
+  stayTimer: 0

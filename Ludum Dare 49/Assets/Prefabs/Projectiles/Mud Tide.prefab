@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2943744598165036406}
   m_Layer: 0
   m_Name: Mud Tide
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,6 +181,7 @@ MonoBehaviour:
   damage: 3
   knockback: 0
   verticalNudge: -5
+  randomizeNudge: 0
   lingering: 0
   applyPhysics: 1
 --- !u!1 &7233630462253724995
@@ -331,6 +332,7 @@ MonoBehaviour:
   damage: 3
   knockback: 0
   verticalNudge: 0
+  randomizeNudge: 0
   lingering: 0
   applyPhysics: 1
 --- !u!1 &8737498621272490264
@@ -481,5 +483,6 @@ MonoBehaviour:
   damage: 3
   knockback: 0
   verticalNudge: 5
+  randomizeNudge: 0
   lingering: 0
   applyPhysics: 1

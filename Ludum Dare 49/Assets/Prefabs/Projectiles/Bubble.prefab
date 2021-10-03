@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7149275625761124466}
   m_Layer: 0
   m_Name: Bubble
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,5 +148,6 @@ MonoBehaviour:
   damage: 3
   knockback: 0
   verticalNudge: 0
+  randomizeNudge: 0
   lingering: 1
   applyPhysics: 1
