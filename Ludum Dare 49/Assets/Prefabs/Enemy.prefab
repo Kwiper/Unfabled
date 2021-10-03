@@ -53,6 +53,8 @@ MonoBehaviour:
   timeSinceLastChange: 0
   health: 20
   maxIFrames: 0.25
+  damage: 0
+  deathTimer: 2
 --- !u!114 &5667526161943833149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +70,9 @@ MonoBehaviour:
   idleTime: 0.5
   jumpTime: 1.5
   jumpDistance: 4
+  walkingSprites: []
+  jumpingSprites: []
+  spriteRenderer: {fileID: 0}
 --- !u!212 &803093777945836790
 SpriteRenderer:
   m_ObjectHideFlags: 0

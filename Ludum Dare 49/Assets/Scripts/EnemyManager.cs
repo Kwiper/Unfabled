@@ -9,6 +9,7 @@ public enum EnemyState {
     Knockback,
     Jump,
     MoveLinear,
+    Death
 }
 public class EnemyManager : MonoBehaviour
 {
@@ -29,6 +30,14 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] float health;
     [SerializeField] float maxIFrames;
     [SerializeField] float damage;
+
+    AudioSource audio;
+    bool hitSound = false;
+
+    SpriteRenderer spriteRenderer;
+    float alpha = 1f;
+    float bg = 1f;
+
     private float iFrames;
     private bool invincible = false;
 
@@ -38,6 +47,9 @@ public class EnemyManager : MonoBehaviour
         rigidBody = GetComponent<Rigidbody2D>();
         rigidBody.velocity = new Vector2(-baseSpeed, 0);
         stateChangedTime = Time.realtimeSinceStartup;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        audio = GetComponent<AudioSource>();
 
         if(!isGravityEnabled) rigidBody.gravityScale = 0;
 
@@ -72,6 +84,18 @@ public class EnemyManager : MonoBehaviour
             case EnemyState.Jump:
                 if(stateCancelTime <= Time.realtimeSinceStartup) setState(EnemyState.Moving);
                 break;
+            case EnemyState.Death:
+                if (alpha > 0) {
+                    alpha -= Time.deltaTime * 1.5f;
+                    bg -= Time.deltaTime * 1.5f;
+                }
+                spriteRenderer.color = new Color(1, bg, bg, alpha);
+
+                if (alpha <= 0)
+                {
+                    Destroy(gameObject);
+                }
+                break;
             // case EnemyState.MoveLinear:
 
             //     if(stateCancelTime <= Time.realtimeSinceStartup) resetState();
@@ -85,10 +109,14 @@ public class EnemyManager : MonoBehaviour
         if(iFrames < 0)
         {
             invincible = false;
+            hitSound = false;
             iFrames = maxIFrames;
         }
 
-        //if (health < 0) Destroy(gameObject); //change to activate death anim later
+        if (health < 0)
+        {
+            enemyState = EnemyState.Death;
+        }
     }
 
     public void setState(EnemyState s){
@@ -130,6 +158,11 @@ public class EnemyManager : MonoBehaviour
     {
         if (col.gameObject.tag == "Projectile" && !invincible)
         {
+            if (!hitSound) {
+                audio.Play();
+                hitSound = true;
+            }
+
             invincible = true;
             applyKnockback(new Vector2(col.gameObject.GetComponent<ProjectileData>().getKnockback(), 0f), maxIFrames);
             health -= col.gameObject.GetComponent<ProjectileData>().getDamage();
