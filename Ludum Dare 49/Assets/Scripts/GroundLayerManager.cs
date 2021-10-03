@@ -8,7 +8,7 @@ public class GroundLayerManager : MonoBehaviour
     public int layer;
 
 
-    private TilemapRenderer spriteRd;
+    private Tilemap tm;
     private Vector3 tileSize;
     private Vector3 originPos;
 
@@ -20,9 +20,7 @@ public class GroundLayerManager : MonoBehaviour
         originPos.z = -layer;
         transform.localPosition = originPos;
 
-        spriteRd = GetComponent<TilemapRenderer>();
-
-        tileSize = spriteRd.bounds.size;
+        tm = GetComponent<Tilemap>();
     }
 
     // Update is called once per frame
@@ -36,7 +34,7 @@ public class GroundLayerManager : MonoBehaviour
 
         //reset position if moved outside of bounds
         float pos = transform.localPosition.x - originPos.x;
-        float localSize = tileSize.x * transform.localScale.x;
+        float localSize = tm.size.x/6 * transform.localScale.x;
         if (Mathf.Abs(pos) >= Mathf.Abs(localSize))
         {
             transform.localPosition = originPos;
