@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7195708260503685011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3449044498905168026}
+  - component: {fileID: 4792608246295846596}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3449044498905168026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7195708260503685011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4792608246295846596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7195708260503685011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1852e2d93d54f0489c6f4865318c6ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beeEnemy: {fileID: 5171832158312749646, guid: 408254872ccb32247810645005973438, type: 3}
+  bearEnemy: {fileID: 7706128975279083073, guid: 5addf9140a7274c4b91d19f8e3ed3b00, type: 3}
+  monkeyEnemy: {fileID: 5287231397056747789, guid: 55c861781f1249b42a294bd3b79cc1eb, type: 3}
+  crowEnemy: {fileID: 1433286044023370846, guid: af6657fd916161c4e801e4738b1a05d2, type: 3}
+  guardEnemy: {fileID: 7225335219217342440, guid: 2b3c1ed1ec998984fa6fa769288700d5, type: 3}
+  level: 1
+  levelIncreasePeriod: 20
