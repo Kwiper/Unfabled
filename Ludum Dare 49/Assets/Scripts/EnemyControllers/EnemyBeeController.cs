@@ -14,16 +14,25 @@ public class EnemyBeeController : MonoBehaviour
 
     private float randIdleTime;
 
+    [SerializeField] List<Sprite> walkingSprites;
+
+    SpriteAnimator walkAnim;
+
+    [SerializeField] SpriteRenderer spriteRenderer;
+
     // Start is called before the first frame update
     void Start()
     {
         enemyManager = GetComponent<EnemyManager>();
         initialY = transform.position.y;
+        walkAnim = new SpriteAnimator(walkingSprites, spriteRenderer, 0.16f);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        walkAnim.HandleUpdate();
         EnemyState state = enemyManager.getState();
         if(state == EnemyState.Idle){
 

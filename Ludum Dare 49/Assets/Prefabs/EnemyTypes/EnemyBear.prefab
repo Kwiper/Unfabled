@@ -69,6 +69,24 @@ MonoBehaviour:
   idleTime: 0.5
   jumpTime: 1.5
   jumpDistance: 6
+  walkingSprites:
+  - {fileID: 21300000, guid: c1fb382ccc2d67447b5c40bdf24f9c18, type: 3}
+  - {fileID: 21300000, guid: b9998f9daec24b3478a22e735ac9b649, type: 3}
+  - {fileID: 21300000, guid: 2666fbd9d3f61114ebbf4f4a12c99fd7, type: 3}
+  - {fileID: 21300000, guid: 001a3fb6afbd9ad4880050ccbd5665c4, type: 3}
+  - {fileID: 21300000, guid: 2666fbd9d3f61114ebbf4f4a12c99fd7, type: 3}
+  - {fileID: 21300000, guid: b9998f9daec24b3478a22e735ac9b649, type: 3}
+  jumpingSprites:
+  - {fileID: 21300000, guid: 48ba411d0ab0dbd4aa81949e3bacad80, type: 3}
+  - {fileID: 21300000, guid: aaf4f7f29f293094aa90a5d002eb16bc, type: 3}
+  - {fileID: 21300000, guid: 3e43ae5d4f8c37348983c3e17792c906, type: 3}
+  - {fileID: 21300000, guid: 3e43ae5d4f8c37348983c3e17792c906, type: 3}
+  - {fileID: 21300000, guid: 3e43ae5d4f8c37348983c3e17792c906, type: 3}
+  - {fileID: 21300000, guid: 3e43ae5d4f8c37348983c3e17792c906, type: 3}
+  - {fileID: 21300000, guid: 3e43ae5d4f8c37348983c3e17792c906, type: 3}
+  - {fileID: 21300000, guid: 3e43ae5d4f8c37348983c3e17792c906, type: 3}
+  - {fileID: 21300000, guid: 3ddf8bb358b52784c9121dbe4c4b345b, type: 3}
+  spriteRenderer: {fileID: 4384553660386829688}
 --- !u!212 &4384553660386829688
 SpriteRenderer:
   m_ObjectHideFlags: 0
