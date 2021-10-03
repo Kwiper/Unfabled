@@ -75,7 +75,8 @@ public class PlayerController : MonoBehaviour
                     int randomElement = Random.Range(0, 4); // Get random int between 0-3
                     menuChoices[i].SetElementType(randomElement);
                     menuChoices[i].Triggered = false;
-                    menuChoices[i].AudioHasPlayed = false;
+                    menuChoices[i].audioHasPlayed = false;
+                    
                 }
 
                 playerState = PlayerState.ChoosingSpell;
@@ -193,12 +194,13 @@ public class PlayerController : MonoBehaviour
             }
             else {
                 trigger2 = menuChoices[3];
-                menuChoices[3].Triggered = true;
+                trigger2.Triggered = true;
             }
         }
 
         if (trigger1 != null && trigger2 != null)
         {
+
 
             // Get the spell from a 2D array with trigger1 and trigger 2 first, then execute the rest of the code.
             int bulletIndex = chart[trigger1.Type][trigger2.Type];

@@ -9,7 +9,7 @@ public class Element : MonoBehaviour
     [SerializeField] List<string> names;
     [SerializeField] List<AudioClip> audioClips;
     [SerializeField] AudioSource audioSource;
-    bool audioHasPlayed = false;
+    public bool audioHasPlayed = false;
 
     string name;
 
@@ -56,7 +56,5 @@ public class Element : MonoBehaviour
     public int Type => type;
 
     public string Name => name;
-
-    public bool AudioHasPlayed { get; set; }
 
 }
