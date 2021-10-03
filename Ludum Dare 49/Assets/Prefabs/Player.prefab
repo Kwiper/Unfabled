@@ -696,6 +696,8 @@ MonoBehaviour:
   - {fileID: 7704148622853196509, guid: 684280907764dee4cac3accac14227a5, type: 3}
   testBulletType: 0
   firePoint: {fileID: 5904706876310355552}
+  health: 0
+  maxHealth: 100
 --- !u!61 &3293302838289832910
 BoxCollider2D:
   m_ObjectHideFlags: 0

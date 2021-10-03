@@ -28,6 +28,7 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] float health;
     [SerializeField] float maxIFrames;
+    [SerializeField] float damage;
     private float iFrames;
     private bool invincible = false;
 
@@ -137,6 +138,7 @@ public class EnemyManager : MonoBehaviour
         }
         if (col.gameObject.tag == "Player")
         {
+            col.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
             Destroy(gameObject);
         }
         if (col.gameObject.tag == "Ground")

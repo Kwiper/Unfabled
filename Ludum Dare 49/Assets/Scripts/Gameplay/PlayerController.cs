@@ -30,10 +30,13 @@ public class PlayerController : MonoBehaviour
 
     GameObject bulletPrefab;
 
-    //debug purposes
+    //projectiles
     [SerializeField] List<GameObject> bulletTypes;
-    [SerializeField] int testBulletType;
+    [SerializeField] int testBulletType; //debug
     [SerializeField] Transform firePoint;
+
+    [SerializeField] float health;
+    [SerializeField] float maxHealth;
 
     Vector2 mousePosition;
 
@@ -53,6 +56,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerState = PlayerState.Idle;
+        health = maxHealth;
     }
 
     private void Update()
@@ -216,6 +220,11 @@ public class PlayerController : MonoBehaviour
         else {
             spellChooseTime -= Time.deltaTime;
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
     }
 
     float GetTimerBarScale() {
