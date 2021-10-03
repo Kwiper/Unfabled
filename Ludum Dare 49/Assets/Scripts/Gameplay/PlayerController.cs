@@ -211,9 +211,9 @@ public class PlayerController : MonoBehaviour
 
             // Get the spell from a 2D array with trigger1 and trigger 2 first, then execute the rest of the code.
             int bulletIndex = chart[trigger1.Type][trigger2.Type];
-            Debug.Log(bulletIndex);
 
-            bulletPrefab = bulletTypes[bulletIndex];
+
+            bulletPrefab = bulletTypes[testBulletType];
 
             menuCount = menuCountMaxTime;
 

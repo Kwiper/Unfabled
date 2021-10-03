@@ -127,7 +127,7 @@ MonoBehaviour:
   growRateX: 0
   growRateY: 0.001
   growAccel: 1.2
-  duration: 1
+  duration: 2
   stayProjectile: 0
   stayTimer: 0.5
 --- !u!114 &1946770329200563771

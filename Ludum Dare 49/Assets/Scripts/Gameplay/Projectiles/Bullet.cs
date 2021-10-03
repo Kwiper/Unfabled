@@ -13,6 +13,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] bool bounce;
     [SerializeField] bool goThroughGround;
 
+    [SerializeField] AudioSource bounceSource;
+
     private Rigidbody2D rb;
 
     // Start is called before the first frame update
@@ -43,7 +45,10 @@ public class Bullet : MonoBehaviour
         }
         if (col.gameObject.tag == "Ground")
         {
-            if(bounce && rb.velocity.y < 0) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * -1);
+            if (bounce && rb.velocity.y < 0) {
+                bounceSource.Play();
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * -1);
+            } 
             else if (!goThroughGround) Destroy(gameObject);
         }
     }
