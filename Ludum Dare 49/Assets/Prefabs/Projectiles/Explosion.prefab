@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3901948587313373972}
   - component: {fileID: 2867130669989145362}
   - component: {fileID: 3588699648767375225}
+  - component: {fileID: -4558539897167816289}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Projectile
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 5149017241208915091}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 8, y: 8, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -146,11 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 0
-  damage: 3
-  knockback: 0
   verticalNudge: 0
   randomizeNudge: 0
-  lingering: 1
   applyPhysics: 0
   bounce: 0
   goThroughGround: 1
@@ -166,3 +164,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94502fc1d7ad50648ad36a6928aaeecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4558539897167816289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5149017241208915091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f19509505d5a2b4fb2150be94f4484e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  knockback: 8
+  lingering: 1

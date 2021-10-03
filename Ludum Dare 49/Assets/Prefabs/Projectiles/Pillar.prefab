@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3107136101294589951}
   - component: {fileID: 2889616852968575513}
   - component: {fileID: 3584136589258100734}
+  - component: {fileID: 1946770329200563771}
   m_Layer: 0
   m_Name: Pillar
   m_TagString: Projectile
@@ -126,7 +127,20 @@ MonoBehaviour:
   growRateY: 0.001
   growAccel: 1.2
   duration: 0.8
-  damage: 0
-  knockback: 0
   stayProjectile: 0
   stayTimer: 0.5
+--- !u!114 &1946770329200563771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5433249876265419518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f19509505d5a2b4fb2150be94f4484e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  knockback: 2
+  lingering: 1

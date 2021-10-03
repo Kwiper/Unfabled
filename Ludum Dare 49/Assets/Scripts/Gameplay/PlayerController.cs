@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (playerState == PlayerState.Busy) {
             // Cast the spell, then after a slight delay switch back to Idle
-            Debug.Log("Kaboom!"); // Testing for spell cast
+            //Debug.Log("Kaboom!"); // Testing for spell cast
 
             cursor.gameObject.SetActive(false);
             busyTime -= Time.deltaTime;
