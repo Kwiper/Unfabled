@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public enum EnemyState {
     Moving,
@@ -137,11 +138,11 @@ public class EnemyManager : MonoBehaviour
         }
         if(col.gameObject.tag == "Ground")
         {
+            Debug.Log("Colliding");
             if (rigidBody.velocity.y < 0) rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
-            var groundY = col.gameObject.transform.position.y;
-            var groundScaleY = col.gameObject.transform.localScale.y;
+            var groundY = col.gameObject.GetComponent<CompositeCollider2D>().bounds.max.y;
             var colliderSize = GetComponent<BoxCollider2D>().size.y * transform.localScale.y;
-            transform.position = new Vector3(transform.position.x, groundY + groundScaleY / 2 + colliderSize / 2, transform.position.z);
+            transform.position = new Vector3(transform.position.x, groundY + colliderSize / 2, transform.position.z);
         }
     }
 
