@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviour
 
             // Fire
             if (Input.GetMouseButtonDown(0)) { // Left click
+                menuCanvas.gameObject.SetActive(false);
 
                 //fire bullet
                 Vector3 targetDir = cursor.transform.position - firePoint.position;
