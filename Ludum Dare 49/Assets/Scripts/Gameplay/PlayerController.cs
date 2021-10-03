@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
 
     //projectiles
     [SerializeField] List<GameObject> bulletTypes;
-    [SerializeField] int testBulletType; //debug
     [SerializeField] Transform firePoint;
 
     [SerializeField] float health;
@@ -53,6 +52,10 @@ public class PlayerController : MonoBehaviour
 
     Element trigger1; // First element selected
     Element trigger2; // Second element selected
+
+    //debug
+    [SerializeField] bool debug;
+    [SerializeField] int testBulletType;
 
     /* FOR CASTING SPELLS:
     - Make 4x4 2D array (index 0-3 both sides)
@@ -154,6 +157,8 @@ public class PlayerController : MonoBehaviour
             if (Input.GetMouseButtonDown(0)) { // Left click
                 menuCanvas.gameObject.SetActive(false);
                 currentAnim = castAnim;
+
+                if (debug) bulletPrefab = bulletTypes[testBulletType];
 
                 //fire bullet
                 Vector3 targetDir = cursor.transform.position - firePoint.position;
