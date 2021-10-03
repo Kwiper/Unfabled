@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     float bufferTime; // Time for buffer state
     [SerializeField] float busyMaxTime; // Time between casting spell and being able to select a new spell
     float busyTime;
+    float menuCountMaxTime = 1f; // Amount of time menu stays up after spells are selected, to give time for sounds to play.
+    float menuCount;
 
     GameObject bulletPrefab;
 
@@ -64,11 +66,16 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Switching to spell choosing state");
                 menuCanvas.gameObject.SetActive(true);
 
+                trigger1 = null;
+                trigger2 = null;
+
                 for (int i = 0; i < menuChoices.Count; i++)
                 {
                     // Randomize elements here
                     int randomElement = Random.Range(0, 4); // Get random int between 0-3
                     menuChoices[i].SetElementType(randomElement);
+                    menuChoices[i].Triggered = false;
+                    menuChoices[i].AudioHasPlayed = false;
                 }
 
                 playerState = PlayerState.ChoosingSpell;
@@ -103,6 +110,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (playerState == PlayerState.CastingSpell)
         {
+            menuCount -= Time.deltaTime;
+            if (menuCount <= 0) {
+                menuCanvas.gameObject.SetActive(false);
+            }
+
             // Aiming
             cursor.gameObject.SetActive(true);
             Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
@@ -192,17 +204,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log(bulletIndex);
 
             bulletPrefab = bulletTypes[bulletIndex];
-            
 
-
-            trigger1.Triggered = false;
-            trigger2.Triggered = false;
-
-            trigger1 = null;
-            trigger2 = null;
-
-
-            menuCanvas.gameObject.SetActive(false);
+            menuCount = menuCountMaxTime;
 
             Debug.Log("Switching to casting spell state");
             playerState = PlayerState.CastingSpell;

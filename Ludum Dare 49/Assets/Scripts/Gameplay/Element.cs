@@ -7,6 +7,10 @@ public class Element : MonoBehaviour
 {
     int type = 0; // 0 = fire; 1 = water; 2 = wind; 3 = earth;
     [SerializeField] List<string> names;
+    [SerializeField] List<AudioClip> audioClips;
+    [SerializeField] AudioSource audioSource;
+    bool audioHasPlayed = false;
+
     string name;
 
     [SerializeField] Color highlightedColor;
@@ -25,9 +29,18 @@ public class Element : MonoBehaviour
         image.sprite = sprites[type];
         name = names[type];
 
+        audioSource.clip = audioClips[type];
+
         if (this.Triggered)
         {
             image.color = highlightedColor;
+
+            if (!audioHasPlayed)
+            {
+                audioHasPlayed = true;
+                audioSource.Play();
+            }
+            
         }
         else {
             image.color = Color.white;
@@ -43,5 +56,7 @@ public class Element : MonoBehaviour
     public int Type => type;
 
     public string Name => name;
+
+    public bool AudioHasPlayed { get; set; }
 
 }
