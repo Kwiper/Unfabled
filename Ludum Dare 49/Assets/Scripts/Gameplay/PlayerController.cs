@@ -213,7 +213,7 @@ public class PlayerController : MonoBehaviour
             int bulletIndex = chart[trigger1.Type][trigger2.Type];
 
 
-            bulletPrefab = bulletTypes[testBulletType];
+            bulletPrefab = bulletTypes[bulletIndex];
 
             menuCount = menuCountMaxTime;
 
