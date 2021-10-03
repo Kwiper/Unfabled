@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5987776416568813581}
   - component: {fileID: 6520089884013934924}
   - component: {fileID: 5445021833226531146}
+  - component: {fileID: 2043210837424573922}
   m_Layer: 0
   m_Name: Dust Storm
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 0.5882353}
   m_FlipX: 0
@@ -145,8 +146,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 5
-  damage: 3
-  knockback: 0
   verticalNudge: 0
-  lingering: 1
+  randomizeNudge: 0
   applyPhysics: 0
+  bounce: 0
+  goThroughGround: 1
+--- !u!114 &2043210837424573922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3111557721271082699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f19509505d5a2b4fb2150be94f4484e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  knockback: 1
+  lingering: 1

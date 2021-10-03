@@ -25,11 +25,19 @@ public class EnemyManager : MonoBehaviour
 
     public float timeSinceLastChange = 0f;
 
+    [SerializeField] float health;
+    [SerializeField] float maxIFrames;
+    private float iFrames;
+    private bool invincible = false;
+
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player");
         rigidBody = GetComponent<Rigidbody2D>();
         rigidBody.velocity = new Vector2(-baseSpeed, 0);
         stateChangedTime = Time.realtimeSinceStartup;
+
+        iFrames = maxIFrames;
     }
 
     // Update is called once per frame
@@ -47,7 +55,7 @@ public class EnemyManager : MonoBehaviour
         // }
         switch (enemyState) {
             case EnemyState.Moving: 
-                rigidBody.AddForce( new Vector2(-baseSpeed - this.rigidBody.velocity.x, isGravityEnabled? 0 : -this.rigidBody.velocity.y), ForceMode2D.Impulse ); 
+                rigidBody.AddForce( new Vector2(-baseSpeed - this.rigidBody.velocity.x, isGravityEnabled? 0 : -this.rigidBody.velocity.y), ForceMode2D.Impulse); 
                 break;
             case EnemyState.Idle:
                 Vector2 impulse = -this.rigidBody.velocity;
@@ -66,7 +74,15 @@ public class EnemyManager : MonoBehaviour
             //     break;
         }
 
-        timeSinceLastChange = Time.realtimeSinceStartup - stateChangedTime;        
+        timeSinceLastChange = Time.realtimeSinceStartup - stateChangedTime;
+
+        //iframes
+        if (invincible) iFrames -= Time.deltaTime;
+        if(iFrames < 0)
+        {
+            invincible = false;
+            iFrames = maxIFrames;
+        }
     }
 
     public void setState(EnemyState s){
@@ -102,6 +118,22 @@ public class EnemyManager : MonoBehaviour
 
         stateCancelTime = Time.realtimeSinceStartup + duration;
         setState(EnemyState.Jump);
+    }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Projectile")
+        {
+            invincible = true;
+            Debug.Log("Colliding");
+            applyKnockback(new Vector2(col.gameObject.GetComponent<ProjectileData>().getKnockback(), 0f), maxIFrames);
+            health -= col.gameObject.GetComponent<ProjectileData>().getDamage();
+            if (!col.gameObject.GetComponent<ProjectileData>().isLingering()) Destroy(col.gameObject);
+        }
+        if (col.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 
     // public void moveLinear(Vector2 targetLocation, float duration){

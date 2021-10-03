@@ -46,9 +46,10 @@ GameObject:
   - component: {fileID: 2757557759612094359}
   - component: {fileID: 7049812216631733168}
   - component: {fileID: 8571253798315610756}
+  - component: {fileID: 1546511209181792520}
   m_Layer: 0
   m_Name: MT Projectile (1)
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +107,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.6037736, g: 0.33809903, b: 0.17315768, a: 1}
   m_FlipX: 0
@@ -178,11 +179,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 15
-  damage: 3
-  knockback: 0
   verticalNudge: -5
-  lingering: 0
+  randomizeNudge: 0
   applyPhysics: 1
+  bounce: 0
+  goThroughGround: 0
+--- !u!114 &1546511209181792520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5536973829688672650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f19509505d5a2b4fb2150be94f4484e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  knockback: 8
+  lingering: 0
 --- !u!1 &7233630462253724995
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,9 +212,10 @@ GameObject:
   - component: {fileID: 2041721875132105605}
   - component: {fileID: 1527141262500287172}
   - component: {fileID: 350690699787229890}
+  - component: {fileID: 7885759338635664254}
   m_Layer: 0
   m_Name: MT Projectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,7 +273,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.6037736, g: 0.33809903, b: 0.17315768, a: 1}
   m_FlipX: 0
@@ -328,11 +345,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 15
-  damage: 3
-  knockback: 0
   verticalNudge: 0
-  lingering: 0
+  randomizeNudge: 0
   applyPhysics: 1
+  bounce: 0
+  goThroughGround: 0
+--- !u!114 &7885759338635664254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7233630462253724995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f19509505d5a2b4fb2150be94f4484e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  knockback: 8
+  lingering: 0
 --- !u!1 &8737498621272490264
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,9 +378,10 @@ GameObject:
   - component: {fileID: 3020461244816785917}
   - component: {fileID: 7730008185687050434}
   - component: {fileID: 5962207564361071723}
+  - component: {fileID: 6002739994450966468}
   m_Layer: 0
   m_Name: MT Projectile (2)
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -406,7 +439,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
   m_Color: {r: 0.6037736, g: 0.33809903, b: 0.17315768, a: 1}
   m_FlipX: 0
@@ -478,8 +511,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 15
-  damage: 3
-  knockback: 0
   verticalNudge: 5
-  lingering: 0
+  randomizeNudge: 0
   applyPhysics: 1
+  bounce: 0
+  goThroughGround: 0
+--- !u!114 &6002739994450966468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8737498621272490264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f19509505d5a2b4fb2150be94f4484e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  knockback: 8
+  lingering: 0

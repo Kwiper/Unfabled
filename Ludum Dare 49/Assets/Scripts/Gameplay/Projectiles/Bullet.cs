@@ -5,14 +5,13 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float bulletSpeed;
-    [SerializeField] float damage;
-    [SerializeField] float knockback;
     [SerializeField] float verticalNudge;
     [SerializeField] bool randomizeNudge;
 
     //parameters
-    [SerializeField] bool lingering;
     [SerializeField] bool applyPhysics;
+    [SerializeField] bool bounce;
+    [SerializeField] bool goThroughGround;
 
     private Rigidbody2D rb;
 
@@ -41,7 +40,11 @@ public class Bullet : MonoBehaviour
         if (col.gameObject.tag == "Enemy")
         {
             //collision.gameObject.GetComponentInParent<Enemy>().TakeDamage(damage); //enemy takes damage
-            if(!lingering) Destroy(gameObject);
+        }
+        if (col.gameObject.tag == "Ground")
+        {
+            if(bounce && rb.velocity.y < 0) rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * -1);
+            else if (!goThroughGround) Destroy(gameObject);
         }
     }
 

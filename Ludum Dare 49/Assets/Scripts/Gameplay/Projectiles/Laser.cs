@@ -9,8 +9,6 @@ public class Laser : MonoBehaviour
     [SerializeField] float growRateY;
     [SerializeField] float growAccel;
     [SerializeField] float duration;
-    [SerializeField] float damage;
-    [SerializeField] float knockback;
 
     [SerializeField] bool stayProjectile;
     [SerializeField] float stayTimer;
