@@ -27,12 +27,14 @@ public class Laser : MonoBehaviour
     void FixedUpdate()
     {
         duration -= Time.deltaTime;
-        if (duration > 0)
+        Vector3 stageDimensions = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        if (duration > 0 && sr.bounds.max.x < stageDimensions.x)
         {
             sr.size += growRate; //grow rate
             growRate = new Vector2(growRate.x * growAccel, growRate.y * growAccel); //grow acceleration
+            //sr.size = Mathf.Clamp(sr.size, 0, );//clamp size
         }
-        else
+        else if(duration < 0)
         {
             if (stayProjectile) transform.position += transform.up * growRate.magnitude;
             else

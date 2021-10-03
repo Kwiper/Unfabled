@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 661804838536473203}
   m_Layer: 0
   m_Name: EnemyMonkey
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,8 +67,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleTime: 1
-  jumpTime: 1.5
-  jumpDistance: 1.5
+  jumpTime: 2
+  jumpDistance: 3
 --- !u!212 &2254262560146076212
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -108,7 +108,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 6ec2dd0489aaf40419ec288e32506e20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
