@@ -162,6 +162,9 @@ MonoBehaviour:
   objectsToTurnOn:
   - {fileID: 1437057867}
   - {fileID: 955195280}
+  - {fileID: 1402108202}
+  - {fileID: 976429433}
+  - {fileID: 1589723366}
   timer: {fileID: 1916461860}
   player: {fileID: 1916461857}
   timerText: {fileID: 1402108203}
