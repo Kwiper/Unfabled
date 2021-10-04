@@ -26,7 +26,7 @@ public class Restart : MonoBehaviour
             {
                 infinite = PlayerPrefs.GetInt("Infinite", 0) == 1;
 
-                if (!infinite)
+                if (infinite)
                 {
                     PlayerPrefs.DeleteAll();
                     PlayerPrefs.SetInt("Infinite", 1);
