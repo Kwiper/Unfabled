@@ -2,6 +2,7 @@ using Action = System.Action;
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
@@ -28,7 +29,8 @@ public class EnemySpawner : MonoBehaviour
     private EnemyWave[][] waves;
 
     public int level = 0;
-    public float levelIncreasePeriod;
+    public List<float> levelIncreasePeriods;
+    private List<float> levelIncreaseTimes = new List<float>();
     private float timeSinceSpawn = 0;
     private float spawnerLifetime = 0;
     private EnemyWave currentWave;
@@ -50,13 +52,11 @@ public class EnemySpawner : MonoBehaviour
 
         EnemyWave[] level2 = new EnemyWave[]{
             new EnemyWave(1, 6, () => spawnGuardSwarm(2)),
-            new EnemyWave(1, 5, () => spawnMonkeySwarm(1)),
             new EnemyWave(1, 10, () => spawnBearSwarm(1)),
         };
 
         EnemyWave[] level3 = new EnemyWave[]{
             new EnemyWave(1, 5, () => spawnCrowSwarm(1)),
-            new EnemyWave(1, 2, () => spawnMonkeySwarm(2)),
             new EnemyWave(1,6, () => spawnGuardSwarm(2)),
             new EnemyWave(1, 10, () => spawnBearSwarm(1)),
         };
@@ -65,77 +65,75 @@ public class EnemySpawner : MonoBehaviour
             new EnemyWave(1, 5, () => spawnCrowSwarm(1)),
             new EnemyWave(1, 10, () => spawnBeeSwarm(2)),
             new EnemyWave(1, 7, () => spawnBearSwarm(1)),
-            new EnemyWave(1, 20, () => spawnMonkeyChasing(5)),
         };
 
         EnemyWave[] level5 = new EnemyWave[]{
             new EnemyWave(1, 10, () => spawnHoneyBear(1)),
-            new EnemyWave(1, 7, () => spawnMonkeyChasing(2)),
             new EnemyWave(1, 7, () => spawnGuardChasing(2)),
         };
 
         EnemyWave[] level6 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level7 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level8 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level9 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level10 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level11 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level12 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level13 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level14 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level15 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level16 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level17 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level18 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level19 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level20 = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] levelInfinite = new EnemyWave[]{
-
+            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
         };
 
         waves = new EnemyWave[][]{level0, level1, level2, level3, level4, level5, level6,
@@ -145,16 +143,39 @@ public class EnemySpawner : MonoBehaviour
         currentWave = level0[Random.Range(0, level0.Length)];
         nextWave = level0[Random.Range(0, level0.Length)];
 
+        float time = 0;
+        for(int i = 0; i < waves.Length; i++){
+            if(i < levelIncreasePeriods.Count){
+                time += levelIncreasePeriods[i];
+            }else{
+                time += levelIncreasePeriods.Last();
+            }
+            levelIncreaseTimes.Add(time);
+        }
+
     }
 
     // Update is called once per frame
+    private int getLevel(){
+        for(int i = waves.Length - 1; i > 0; i--){
+            if(spawnerLifetime > levelIncreaseTimes[i - 1]){
+                return i;
+            }
+        }
+        return 0;
+
+    }
     void Update()
     {
         timeSinceSpawn += Time.deltaTime;
         spawnerLifetime += Time.deltaTime;
 
         
-        level = Mathf.Min( Mathf.FloorToInt(spawnerLifetime / levelIncreasePeriod), waves.Length - 1);
+        level = getLevel();
+
+        // level = Mathf.Min( Mathf.FloorToInt(spawnerLifetime / levelIncreasePeriod), waves.Length - 1);
+
+
         if (level >= waves.Length - 1 && !infinite) { } //set up end screen here
 
 
@@ -162,7 +183,7 @@ public class EnemySpawner : MonoBehaviour
             EnemyWave[] currentLevelWaves = waves[level];
 
             currentWave = nextWave;
-            nextWave = currentLevelWaves[Random.Range(0, currentLevelWaves.Length)];
+            nextWave = currentLevelWaves[Random.Range(0, currentLevelWaves.Length - 1)];
 
             timeSinceSpawn = 0;
             currentWave.spawn();
