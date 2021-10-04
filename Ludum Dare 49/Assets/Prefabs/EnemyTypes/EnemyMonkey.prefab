@@ -82,7 +82,7 @@ MonoBehaviour:
   idleSprite:
   - {fileID: 21300000, guid: 044a759d38a342848932f58d3468fc8c, type: 3}
   - {fileID: 21300000, guid: 1b72bcac8d0f7284994c8fa9f6d08c99, type: 3}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 2254262560146076212}
 --- !u!212 &2254262560146076212
 SpriteRenderer:
   m_ObjectHideFlags: 0

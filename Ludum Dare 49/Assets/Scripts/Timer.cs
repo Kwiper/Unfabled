@@ -9,6 +9,9 @@ public class Timer : MonoBehaviour
     PlayerController player;
     private float startTime;
 
+    public string minutes;
+    public string seconds;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +25,8 @@ public class Timer : MonoBehaviour
         if (player.Health > 0) {
             float t = Time.time - startTime;
 
-            string minutes = ((int)t / 60).ToString();
-            string seconds = (t % 60).ToString("f2");
+            minutes = ((int)t / 60).ToString();
+            seconds = (t % 60).ToString("f2");
 
             timerText.text = minutes + ":" + seconds;
         }
