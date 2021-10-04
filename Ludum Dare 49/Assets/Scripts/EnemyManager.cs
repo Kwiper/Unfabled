@@ -113,7 +113,7 @@ public class EnemyManager : MonoBehaviour
             iFrames = maxIFrames;
         }
 
-        if (health < 0)
+        if (health <= 0)
         {
             enemyState = EnemyState.Death;
         }
