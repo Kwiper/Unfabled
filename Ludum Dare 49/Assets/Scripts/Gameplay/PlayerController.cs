@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         playerState = PlayerState.Idle;
-        health = maxHealth;
+        health = PlayerPrefs.GetFloat("Health", maxHealth);
     }
 
     private void Start()

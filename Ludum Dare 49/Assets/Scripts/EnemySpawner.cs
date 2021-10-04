@@ -33,16 +33,22 @@ public class EnemySpawner : MonoBehaviour
     public List<float> levelIncreasePeriods;
     private List<float> levelIncreaseTimes = new List<float>();
     private float timeSinceSpawn = 0;
-    private float spawnerLifetime = 0;
+    private float spawnerLifetime;
     private EnemyWave currentWave;
     private EnemyWave nextWave;
 
+    [SerializeField] GameObject player;
+    
     public bool infinite;
     [SerializeField] bool debug;
     private bool isSpawning = true;
 
     void Start()
     {
+        // x10 isn't necesssary, but im making 100% sure that it continues in infinite mode
+        spawnerLifetime = PlayerPrefs.GetFloat("Time", 0) * 10;
+
+
         //set infinite = playerpref here
         infinite = PlayerPrefs.GetInt("Infinite", 0) == 1;
         isSpawning = true;
@@ -258,7 +264,20 @@ public class EnemySpawner : MonoBehaviour
         {
             isSpawning = false;
             GameObject[] remainingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
-            if(remainingEnemies.Length <= 0) SceneManager.LoadScene(2); //goes to end screen
+
+
+            if(remainingEnemies.Length <= 0) {
+                //set state for restart
+                PlayerPrefs.SetFloat("Time", player.GetComponent<Timer>().TimeElapsed);
+                PlayerPrefs.SetFloat("Health", player.GetComponent<PlayerController>().Health);
+
+                // Debug.Log($"time: {PlayerPrefs.GetFloat("Time", 0f)}, health: {PlayerPrefs.GetFloat("Health", 0f)}");
+
+                PlayerPrefs.SetInt("Infinite", 1);
+
+
+                SceneManager.LoadScene(2); //goes to end screen
+            }
         }
 
 
