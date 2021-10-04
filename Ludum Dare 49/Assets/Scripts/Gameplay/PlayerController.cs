@@ -271,6 +271,11 @@ public class PlayerController : MonoBehaviour
         return Mathf.Clamp(normalizedHP, 0, 1);
     }
 
+    public Transform getFirePoint()
+    {
+        return firePoint;
+    }
+
     static int[][] chart =
 {
                          //FIR  WAT  WIN  EAR

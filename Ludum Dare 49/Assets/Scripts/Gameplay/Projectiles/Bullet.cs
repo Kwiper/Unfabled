@@ -39,7 +39,7 @@ public class Bullet : MonoBehaviour
     {
         float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        if (toDestroy) GetComponent<ProjectileData>().DestroyBullet(0f);
+        if (toDestroy) Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -54,12 +54,12 @@ public class Bullet : MonoBehaviour
                 bounceSource.Play();
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * -1);
             } 
-            else if (!goThroughGround) GetComponent<ProjectileData>().DestroyBullet(0f);
+            else if (!goThroughGround) Destroy(gameObject);
         }
     }
 
     void OnBecameInvisible()
     {
-        GetComponent<ProjectileData>().DestroyBullet(1f);
+        Destroy(gameObject, 1.0f);
     }
 }
