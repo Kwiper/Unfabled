@@ -409,6 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setInfinite: 0
+  retainState: 0
 --- !u!114 &166370240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -678,6 +679,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   setInfinite: 1
+  retainState: 0
 --- !u!114 &339941981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1485,6 +1487,7 @@ GameObject:
   - component: {fileID: 666362136}
   - component: {fileID: 666362138}
   - component: {fileID: 666362139}
+  - component: {fileID: 666362140}
   m_Layer: 5
   m_Name: QuitGame
   m_TagString: Untagged
@@ -1591,6 +1594,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.03, y: 1.73}
   m_EdgeRadius: 0
+--- !u!114 &666362140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666362134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f2e33c225520ff4c8930e425b2ccc7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &770439330
 GameObject:
   m_ObjectHideFlags: 0
