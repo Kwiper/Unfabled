@@ -49,6 +49,9 @@ public class DeathScreen : MonoBehaviour
             {
                 timerText.text = "You survived for " + minutes + ":" + seconds;
             }
+            else {
+                timerText.text = "The forest consumed you alive!";
+            }
 
             restart.color = new Color(restartHover.RGB, restartHover.RGB, restartHover.RGB);
             menu.color = new Color(menuHover.RGB, menuHover.RGB, menuHover.RGB);
