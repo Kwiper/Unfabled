@@ -33,7 +33,7 @@ public class EnemySpawner : MonoBehaviour
     public List<float> levelIncreasePeriods;
     private List<float> levelIncreaseTimes = new List<float>();
     private float timeSinceSpawn = 0;
-    private float spawnerLifetime = 314;
+    private float spawnerLifetime = 0;
     private EnemyWave currentWave;
     private EnemyWave nextWave;
 
