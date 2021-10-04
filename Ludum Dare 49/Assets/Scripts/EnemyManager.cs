@@ -171,8 +171,12 @@ public class EnemyManager : MonoBehaviour
         }
         if (col.gameObject.tag == "Player")
         {
-            col.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
-            Destroy(gameObject);
+            if (enemyState != EnemyState.Death)
+            {
+                col.gameObject.GetComponent<PlayerController>().TakeDamage(damage);
+                audio.Play();
+            }
+            enemyState = EnemyState.Death;
         }
         if (col.gameObject.tag == "Ground")
         {
