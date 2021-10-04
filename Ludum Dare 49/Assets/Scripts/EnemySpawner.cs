@@ -312,7 +312,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public void spawnGuardSwarm(int count){
-        spawnGroupEnemy(guardEnemy, count, 0, 0, 2, 0);
+        spawnGroupEnemy(guardEnemy, count, 0f, 0f, 2f, 0f);
     }
 
     public void spawnMonkeySwarm(int count){
@@ -325,7 +325,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public void spawnBearSwarm(int count){
-        spawnGroupEnemy(bearEnemy, count, 0,0, 3f, 2f);
+        spawnGroupEnemy(bearEnemy, count, 0f, 0f, 3f, 2f);
     }
 
 
@@ -333,16 +333,16 @@ public class EnemySpawner : MonoBehaviour
 
     public void spawnHoneyBear(int bearCount){
         spawnBeeSwarm(bearCount * 2);
-        spawnTimedGroupEnemy(bearEnemy, new Vector2(10, 0), bearCount, 2f);
+        spawnTimedGroupEnemy(bearEnemy, new Vector2(10f, 0f), bearCount, 2f);
     }
 
     public void spawnGuardChasing(int guardCount){
         spawnBearSwarm(1);
-        spawnTimedGroupEnemy(guardEnemy, new Vector2(2, 0), guardCount, 0.5f);
+        spawnTimedGroupEnemy(guardEnemy, new Vector2(2f, 0f), guardCount, 0.5f);
     }
 
     public void spawnMonkeyChasing(int monkeyCount){
-        GameObject guard = spawnEnemy(guardEnemy, new Vector2(-2, 0));
+        GameObject guard = spawnEnemy(guardEnemy, new Vector2(-2f, 0f));
         guard.GetComponent<EnemyManager>().baseSpeed = 0.6f;
 
         spawnMonkeySwarm(monkeyCount);
@@ -350,6 +350,6 @@ public class EnemySpawner : MonoBehaviour
 
     public void spawnMonkeyBear(int count){
         spawnMonkeySwarm(count);
-        spawnTimedGroupEnemy(bearEnemy, new Vector2(10, 0), count, 4f);
+        spawnTimedGroupEnemy(bearEnemy, new Vector2(10f, 0f), count, 4f);
     }
 }

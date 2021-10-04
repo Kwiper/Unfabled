@@ -35,7 +35,7 @@ public class Laser : MonoBehaviour
             float dx = bgSpeed * layerSpeed * Time.deltaTime;
             transform.Translate(dx, 0f, 0f);
         }
-        if (duration > 0 && sr.bounds.max.x < stageDimensions.x * 1.25 && sr.bounds.max.y < stageDimensions.y * 1.25)
+        if (duration > 0 && sr.bounds.max.x < stageDimensions.x * 1.5 && sr.bounds.max.y < stageDimensions.y * 1.5)
         {
             sr.size += growRate; //grow rate
             growRate = new Vector2(growRate.x * growAccel, growRate.y * growAccel); //grow acceleration

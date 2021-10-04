@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class AutoDestroyer : MonoBehaviour
 {
+    [SerializeField] float time;
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 2.0f);
+        Destroy(gameObject, time);
     }
 }

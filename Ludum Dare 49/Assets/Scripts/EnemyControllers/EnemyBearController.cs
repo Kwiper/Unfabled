@@ -39,16 +39,25 @@ public class EnemyBearController : MonoBehaviour
 
         currentAnim.HandleUpdate();
 
-        if(Mathf.Abs(posDiff.x) < jumpDistance){
+        if (Mathf.Abs(posDiff.x) < jumpDistance)
+        {
             EnemyState state = enemyManager.getState();
 
-            if(state == EnemyState.Moving){
+            if (state == EnemyState.Moving)
+            {
                 enemyManager.setState(EnemyState.Idle);
                 currentAnim = walkAnim;
-            }else if(state == EnemyState.Idle && enemyManager.timeSinceLastChange > idleTime){
-                enemyManager.applyJump((Vector2) targetPos, jumpTime);
+            }
+            else if (state == EnemyState.Idle && enemyManager.timeSinceLastChange > idleTime)
+            {
+                enemyManager.applyJump((Vector2)targetPos, jumpTime);
                 currentAnim = jumpAnim;
             }
         }
+    }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "BearKiller") Destroy(gameObject);
     }
 }

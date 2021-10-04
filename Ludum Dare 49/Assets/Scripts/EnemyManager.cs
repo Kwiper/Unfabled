@@ -119,9 +119,11 @@ public class EnemyManager : MonoBehaviour
             enemyState = EnemyState.Death;
         }
 
-        //attempt at bug fix where enemies could drop in from the ceiling
+        //prevents enemies from going above ceiling
         Vector3 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-        if (transform.position.y >= screenBounds.y) transform.position = new Vector3(transform.position.x, screenBounds.y, transform.position.z);
+        float topBound = GetComponent<BoxCollider2D>().size.y;
+        if (transform.position.y >= screenBounds.y) transform.position = new Vector3(transform.position.x, screenBounds.y - topBound/2, transform.position.z);
+        if(transform.position.y < -screenBounds.y) Destroy(gameObject); //prevents spawning in weird places
     }
 
     public void setState(EnemyState s){
@@ -161,7 +163,9 @@ public class EnemyManager : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D col)
     {
-        if (col.gameObject.tag == "Projectile" && !invincible)
+        Vector3 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        if (col.gameObject.tag == "Projectile" && !invincible && 
+            GetComponent<BoxCollider2D>().bounds.min.x < screenBounds.x) //prevents enemies from getting hit if they're not on screen
         {
             if (!hitSound) {
                 audio.Play();

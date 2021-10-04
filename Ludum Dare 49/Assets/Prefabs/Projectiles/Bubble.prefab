@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -6663917040293460604}
   - component: {fileID: 871267606103019870}
   - component: {fileID: 1693428512727856413}
+  - component: {fileID: 7496852382951210204}
   m_Layer: 0
   m_Name: Bubble
   m_TagString: Projectile
@@ -361,6 +362,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7496852382951210204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254936668985073651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fda37d450f0e88478d857bec06703f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 5
 --- !u!1 &570957723594345323
 GameObject:
   m_ObjectHideFlags: 0
