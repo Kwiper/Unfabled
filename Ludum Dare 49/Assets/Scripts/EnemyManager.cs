@@ -30,6 +30,7 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] float health;
     [SerializeField] float maxIFrames;
     [SerializeField] float damage;
+    [SerializeField] GameObject hitParticleContainer;
 
     AudioSource audio;
     bool hitSound = false;
@@ -168,6 +169,12 @@ public class EnemyManager : MonoBehaviour
             health -= col.gameObject.GetComponent<ProjectileData>().getDamage();
             Debug.Log("Enemy Health: " + health);
             if (!col.gameObject.GetComponent<ProjectileData>().isLingering()) col.gameObject.GetComponent<ProjectileData>().toDestroy = true;
+
+            //particle
+            GameObject hitParticle = Instantiate(hitParticleContainer, transform);
+            hitParticle.transform.position = new Vector3(GetComponent<BoxCollider2D>().bounds.max.x, transform.position.y, transform.position.z);
+            hitParticle.GetComponent<ParticleSystem>().Play();
+            Destroy(hitParticle, 0.25f);
         }
         if (col.gameObject.tag == "Player")
         {
@@ -186,6 +193,8 @@ public class EnemyManager : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y + (groundY - colliderMin), transform.position.z);
         }
     }
+
+
 
     // public void moveLinear(Vector2 targetLocation, float duration){
 

@@ -55,6 +55,7 @@ MonoBehaviour:
   health: 50
   maxIFrames: 0.25
   damage: 8
+  hitParticleContainer: {fileID: 1882928039147255397, guid: 4e458f4391af1ff4e9011d91eb3f48a0, type: 3}
 --- !u!114 &1808464432824160994
 MonoBehaviour:
   m_ObjectHideFlags: 0
