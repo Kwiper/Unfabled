@@ -57,89 +57,162 @@ public class EnemySpawner : MonoBehaviour
         };
 
         EnemyWave[] level3 = new EnemyWave[]{
-            new EnemyWave(1, 5, () => spawnCrowSwarm(1)),
-            new EnemyWave(1,6, () => spawnGuardSwarm(2)),
-            new EnemyWave(1, 10, () => spawnBearSwarm(1)),
+            new EnemyWave(2, 2, () => spawnBearSwarm(2)),
+            new EnemyWave(2, 5, () => spawnGuardSwarm(1)),
+            new EnemyWave(2, 5, () => spawnCrowSwarm(2)),
         };
 
         EnemyWave[] level4 = new EnemyWave[]{
-            new EnemyWave(1, 5, () => spawnCrowSwarm(1)),
-            new EnemyWave(1, 10, () => spawnBeeSwarm(2)),
-            new EnemyWave(1, 7, () => spawnBearSwarm(1)),
+            new EnemyWave(2, 4, () => spawnBeeSwarm(1)),
+            new EnemyWave(3, 4, () => spawnMonkeyChasing(2)),
+            new EnemyWave(2, 4, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level5 = new EnemyWave[]{
-            new EnemyWave(1, 10, () => spawnHoneyBear(1)),
-            new EnemyWave(1, 7, () => spawnGuardChasing(2)),
+            new EnemyWave(1, 4, () => spawnHoneyBear(2)),
+            new EnemyWave(2, 4, () => spawnCrowSwarm(2)),
+            new EnemyWave(1, 4, () => spawnHoneyBear(1)),
         };
 
         EnemyWave[] level6 = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(1, 4, () => spawnBeeSwarm(1)),
+            new EnemyWave(3, 4, () => spawnMonkeyChasing(3)),
+            new EnemyWave(1, 4, () => spawnBeeSwarm(1)),
         };
 
         EnemyWave[] level7 = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(1, 4, () => spawnBearSwarm(2)),
+            new EnemyWave(3, 4, () => spawnCrowSwarm(3)),
+            new EnemyWave(1, 4, () => spawnBearSwarm(2)),
         };
 
         EnemyWave[] level8 = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(1, 2, () => spawnMonkeyChasing(1)),
+            new EnemyWave(1, 3, () => spawnBeeSwarm(2)),
+            new EnemyWave(1, 2, () => spawnMonkeyChasing(1)),
+            new EnemyWave(1, 3, () => spawnBeeSwarm(2)),
+            new EnemyWave(1, 2, () => spawnMonkeyChasing(1)),
         };
 
         EnemyWave[] level9 = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(1, 2, () => spawnHoneyBear(1)),
+            new EnemyWave(1, 3, () => spawnCrowSwarm(2)),
+            new EnemyWave(1, 2, () => spawnHoneyBear(1)),
+            new EnemyWave(1, 3, () => spawnCrowSwarm(2)),
+            new EnemyWave(1, 2, () => spawnHoneyBear(1)),
         };
 
         EnemyWave[] level10 = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(1, 2, () => spawnMonkeyChasing(1)),
+            new EnemyWave(1, 2, () => spawnBeeSwarm(2)),
+            new EnemyWave(1, 2, () => spawnMonkeySwarm(1)),
+            new EnemyWave(1, 2, () => spawnGuardSwarm(1)),
+            new EnemyWave(1, 2, () => spawnMonkeySwarm(1)),
+            new EnemyWave(1, 2, () => spawnBeeSwarm(2)),
+            new EnemyWave(1, 2, () => spawnMonkeyChasing(1)),
         };
 
         EnemyWave[] level11 = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(4, 4, () => spawnBeeSwarm(3)),
+            new EnemyWave(1, 6, () => spawnBearSwarm(3)),
+            new EnemyWave(2, 3, () => spawnBearSwarm(5)),
         };
 
         EnemyWave[] level12 = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(4, 2, () => spawnGuardSwarm(2)),
+            new EnemyWave(1, 2, () => spawnBeeSwarm(2)),
+            new EnemyWave(1, 2, () => spawnCrowSwarm(2)),
+            new EnemyWave(1, 2, () => spawnBeeSwarm(2)),
+            new EnemyWave(1, 2, () => spawnCrowSwarm(2)),
+            new EnemyWave(1, 2, () => spawnGuardSwarm(2)),
         };
 
         EnemyWave[] level13 = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(4, 2, () => spawnMonkeySwarm(2)),
+            new EnemyWave(1, 2, () => spawnHoneyBear(2)),
+            new EnemyWave(1, 2, () => spawnMonkeySwarm(1)),
+            new EnemyWave(1, 2, () => spawnHoneyBear(2)),
+            new EnemyWave(1, 2, () => spawnMonkeySwarm(1)),
         };
 
         EnemyWave[] level14 = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(1, 2, () => spawnCrowSwarm(1)),
+            new EnemyWave(1, 3, () => spawnMonkeyChasing(2)),
+            new EnemyWave(1, 2, () => spawnCrowSwarm(2)),
+            new EnemyWave(1, 3, () => spawnGuardSwarm(2)),
+            new EnemyWave(1, 2, () => spawnCrowSwarm(1)),
+            new EnemyWave(1, 3, () => spawnMonkeyChasing(2)),
+            new EnemyWave(1, 2, () => spawnCrowSwarm(1)),
         };
 
         EnemyWave[] level15 = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(1, 2, () => spawnHoneyBear(1)),
+            new EnemyWave(1, 3, () => spawnGuardSwarm(2)),
+            new EnemyWave(1, 2, () => spawnHoneyBear(2)),
+            new EnemyWave(1, 2, () => spawnGuardChasing(1)),
+            new EnemyWave(1, 2, () => spawnHoneyBear(1)),
+            new EnemyWave(1, 2, () => spawnBeeSwarm(3)),
+            new EnemyWave(1, 3, () => spawnGuardSwarm(2)),
         };
 
         EnemyWave[] level16 = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(1, 2, () => spawnCrowSwarm(3)),
+            new EnemyWave(1, 3, () => spawnGuardSwarm(1)),
+            new EnemyWave(1, 2, () => spawnCrowSwarm(3)),
+            new EnemyWave(1, 3, () => spawnGuardSwarm(1)),
+            new EnemyWave(1, 2, () => spawnCrowSwarm(3)),
+            new EnemyWave(1, 3, () => spawnGuardSwarm(1)),
+            new EnemyWave(1, 2, () => spawnCrowSwarm(3)),
         };
 
         EnemyWave[] level17 = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(1, 3, () => spawnMonkeyChasing(2)),
+            new EnemyWave(1, 3, () => spawnCrowSwarm(2)),
+            new EnemyWave(1, 3, () => spawnBeeSwarm(2)),
+            new EnemyWave(1, 3, () => spawnCrowSwarm(2)),
+            new EnemyWave(1, 3, () => spawnBeeSwarm(2)),
+            new EnemyWave(1, 3, () => spawnMonkeyChasing(2)),
         };
 
         EnemyWave[] level18 = new EnemyWave[]{
+            new EnemyWave(1, 2, () => spawnGuardChasing(2)),
+            new EnemyWave(1, 3, () => spawnHoneyBear(2)),
+            new EnemyWave(1, 3, () => spawnCrowSwarm(3)),
+            new EnemyWave(1, 3, () => spawnMonkeySwarm(2)),
             new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(1, 2, () => spawnMonkeyChasing(1)),
+            new EnemyWave(1, 2, () => spawnCrowSwarm(2)),
         };
 
         EnemyWave[] level19 = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
-        };
-
-        EnemyWave[] level20 = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(1, 2, () => spawnHoneyBear(2)),
+            new EnemyWave(1, 2, () => spawnMonkeyChasing(2)),
+            new EnemyWave(1, 2, () => spawnCrowSwarm(3)),
+            new EnemyWave(1, 1, () => spawnGuardChasing(2)),
+            new EnemyWave(1, 2, () => spawnBeeSwarm(3)),
+            new EnemyWave(1, 2, () => spawnMonkeySwarm(2)),
+            new EnemyWave(1, 1, () => spawnCrowSwarm(2)),
+            new EnemyWave(1, 1, () => spawnBearSwarm(1)),
+            new EnemyWave(1, 1, () => spawnGuardSwarm(1)),
+            new EnemyWave(1, 1, () => spawnMonkeyChasing(1)),
         };
 
         EnemyWave[] levelInfinite = new EnemyWave[]{
-            new EnemyWave(1, 2, () => spawnBeeSwarm(1)),
+            new EnemyWave(1, 2, () => spawnHoneyBear(Random.Range(0, 4))), 
+            new EnemyWave(1, 2, () => spawnMonkeyChasing(Random.Range(0, 4))),
+            new EnemyWave(1, 2, () => spawnCrowSwarm(Random.Range(0, 5))),
+            new EnemyWave(1, 1, () => spawnGuardChasing(Random.Range(0, 4))),
+            new EnemyWave(1, 2, () => spawnBeeSwarm(Random.Range(0, 4))),
+            new EnemyWave(1, 2, () => spawnMonkeySwarm(Random.Range(0, 3))),
+            new EnemyWave(1, 1, () => spawnCrowSwarm(Random.Range(0, 4))),
+            new EnemyWave(1, 1, () => spawnBearSwarm(Random.Range(0, 2))),
+            new EnemyWave(1, 1, () => spawnGuardSwarm(Random.Range(0, 2))),
+            new EnemyWave(1, 1, () => spawnMonkeyChasing(Random.Range(0, 3))),
         };
 
         waves = new EnemyWave[][]{level0, level1, level2, level3, level4, level5, level6,
             level7, level8, level9, level10, level11, level12, level13, level14, level15,
-            level16, level17, level18, level19, level20, levelInfinite};
+            level16, level17, level18, level19, levelInfinite};
 
         currentWave = level0[Random.Range(0, level0.Length)];
         nextWave = level0[Random.Range(0, level0.Length)];

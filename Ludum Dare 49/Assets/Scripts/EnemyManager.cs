@@ -118,6 +118,10 @@ public class EnemyManager : MonoBehaviour
         {
             enemyState = EnemyState.Death;
         }
+
+        //attempt at bug fix where enemies could drop in from the ceiling
+        Vector3 screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        if (transform.position.y >= screenBounds.y) transform.position = new Vector3(transform.position.x, screenBounds.y, transform.position.z);
     }
 
     public void setState(EnemyState s){
