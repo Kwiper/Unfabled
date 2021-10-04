@@ -192,7 +192,7 @@ MonoBehaviour:
   knockback: 0
   lingering: 0
   toDestroy: 0
-  hitEffect: {fileID: 0}
+  hitEffect: {fileID: 1882928039147255397, guid: 4e458f4391af1ff4e9011d91eb3f48a0, type: 3}
   castEffect: {fileID: 0}
 --- !u!82 &-2850520219576517240
 AudioSource:

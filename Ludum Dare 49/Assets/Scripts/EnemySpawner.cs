@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public struct EnemyWave {
@@ -32,16 +33,19 @@ public class EnemySpawner : MonoBehaviour
     public List<float> levelIncreasePeriods;
     private List<float> levelIncreaseTimes = new List<float>();
     private float timeSinceSpawn = 0;
-    private float spawnerLifetime = 0;
+    private float spawnerLifetime = 314;
     private EnemyWave currentWave;
     private EnemyWave nextWave;
 
     public bool infinite;
+    [SerializeField] bool debug;
+    private bool isSpawning = true;
 
     void Start()
     {
         //set infinite = playerpref here
         infinite = PlayerPrefs.GetInt("Infinite", 0) == 1;
+        isSpawning = true;
 
         EnemyWave[] level0 = new EnemyWave[]{
             new EnemyWave(0, 5, () => spawnGuardSwarm(1)),
@@ -250,9 +254,12 @@ public class EnemySpawner : MonoBehaviour
         // level = Mathf.Min( Mathf.FloorToInt(spawnerLifetime / levelIncreasePeriod), waves.Length - 1);
 
 
-        if (level >= waves.Length - 1 && !infinite) {
-
-        } //set up end screen here
+        if (level >= waves.Length - 1 && !infinite)
+        {
+            isSpawning = false;
+            GameObject[] remainingEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            if(remainingEnemies.Length <= 0) SceneManager.LoadScene(2); //goes to end screen
+        }
 
 
         if(timeSinceSpawn >= currentWave.delayEnd + nextWave.delayStart){
@@ -262,7 +269,7 @@ public class EnemySpawner : MonoBehaviour
             nextWave = currentLevelWaves[Random.Range(0, currentLevelWaves.Length - 1)];
 
             timeSinceSpawn = 0;
-            currentWave.spawn();
+            if(isSpawning) currentWave.spawn();
         }
     }
 
