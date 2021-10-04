@@ -682,7 +682,7 @@ MonoBehaviour:
   cursor: {fileID: 6473123026127335172}
   timerBar: {fileID: 6473123025814032209}
   hpBar: {fileID: 0}
-  spellChooseMaxTime: 0.75
+  spellChooseMaxTime: 1.25
   bufferMaxTime: 0.5
   busyMaxTime: 1
   bulletTypes:
