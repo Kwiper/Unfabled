@@ -8,9 +8,13 @@ public class Menu : MonoBehaviour
     [SerializeField] Text start;
     [SerializeField] Text quit;
     [SerializeField] Text ld;
+    [SerializeField] Text howTo;
+    [SerializeField] Text credits;
 
     [SerializeField] OnHover startHover;
     [SerializeField] OnHover quitHover;
+    [SerializeField] OnHover howToHover;
+    [SerializeField] OnHover creditsHover;
 
 
     float fadeTimer = 1f;
@@ -24,6 +28,8 @@ public class Menu : MonoBehaviour
         start.color = new Color(1, 1, 1, alpha);
         quit.color = new Color(1, 1, 1, alpha);
         ld.color = new Color(1, 1, 1, alpha);
+        howTo.color = new Color(1, 1, 1, alpha);
+        credits.color = new Color(1, 1, 1, alpha);
         
     }
 
@@ -38,6 +44,8 @@ public class Menu : MonoBehaviour
         {
             start.color = new Color(startHover.RGB, startHover.RGB, startHover.RGB, alpha);
             quit.color = new Color(quitHover.RGB, quitHover.RGB, quitHover.RGB, alpha);
+            howTo.color = new Color(howToHover.RGB, howToHover.RGB, howToHover.RGB, alpha);
+            credits.color = new Color(creditsHover.RGB, creditsHover.RGB, creditsHover.RGB, alpha);
             ld.color = new Color(1, 1, 1, alpha);
 
             alpha += Time.deltaTime * 0.75f;
