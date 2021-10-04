@@ -6522,7 +6522,7 @@ PrefabInstance:
       objectReference: {fileID: 605259495}
     - target: {fileID: 6473123025691563605, guid: 85b4e9a15065e9f438f2b8a44a973979, type: 3}
       propertyPath: testBulletType
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6473123025691563605, guid: 85b4e9a15065e9f438f2b8a44a973979, type: 3}
       propertyPath: spellChooseMaxTime

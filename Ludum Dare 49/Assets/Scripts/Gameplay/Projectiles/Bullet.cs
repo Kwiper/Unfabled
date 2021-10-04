@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] AudioSource bounceSource;
 
     //particle
-    [SerializeField] ParticleSystem bounceEffect;
+    [SerializeField] GameObject bounceEffect;
 
     private Rigidbody2D rb;
 
@@ -57,6 +57,11 @@ public class Bullet : MonoBehaviour
         {
             if (bounce && rb.velocity.y < 0) {
                 bounceSource.Play();
+                if (bounceEffect != null)
+                {
+                    GameObject bEffect = Instantiate(bounceEffect, transform);
+                    bEffect.SetActive(true);
+                }
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * -1);
             } 
             else if (!goThroughGround) Destroy(gameObject);
