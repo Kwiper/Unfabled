@@ -41,6 +41,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         //set infinite = playerpref here
+        infinite = PlayerPrefs.GetInt("Infinite", 0) == 1;
 
         EnemyWave[] level0 = new EnemyWave[]{
             new EnemyWave(0, 5, () => spawnGuardSwarm(1)),
@@ -176,7 +177,9 @@ public class EnemySpawner : MonoBehaviour
         // level = Mathf.Min( Mathf.FloorToInt(spawnerLifetime / levelIncreasePeriod), waves.Length - 1);
 
 
-        if (level >= waves.Length - 1 && !infinite) { } //set up end screen here
+        if (level >= waves.Length - 1 && !infinite) {
+
+        } //set up end screen here
 
 
         if(timeSinceSpawn >= currentWave.delayEnd + nextWave.delayStart){

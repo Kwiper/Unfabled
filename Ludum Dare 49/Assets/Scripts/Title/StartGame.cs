@@ -7,11 +7,14 @@ public class StartGame : MonoBehaviour
 {
 
     OnHover hover;
+    [SerializeField] bool setInfinite;
+    int setInfInt;
 
     // Start is called before the first frame update
     void Start()
     {
         hover = GetComponent<OnHover>();
+        setInfInt = setInfinite ? 1 : 0;
     }
 
     // Update is called once per frame
@@ -19,6 +22,7 @@ public class StartGame : MonoBehaviour
     {
         if (hover.GetMouseHover()) {
             if (Input.GetMouseButtonUp(0)) {
+                PlayerPrefs.SetInt("Infinite", setInfInt);
                 SceneManager.LoadScene(1);
             }
         }
