@@ -10,17 +10,21 @@ public class ProjectileData : MonoBehaviour
     public bool toDestroy = false;
 
     //particles
-    [SerializeField] ParticleSystem bulletTrail;
     [SerializeField] ParticleSystem hitEffect;
+    [SerializeField] GameObject castEffect;
+
+    private GameObject cast;
 
     void Start()
     {
-        bulletTrail.Play();
+        //if (bulletTrail != null) bulletTrail.Play();
+        if (castEffect != null) cast = Instantiate(castEffect, GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().getFirePoint());
+        cast.SetActive(true);
     }
 
     void FixedUpdate()
     {
-        if (toDestroy) DestroyBullet(0f);
+        if (toDestroy) Destroy(gameObject);
     }
 
     public float getKnockback()
@@ -36,12 +40,6 @@ public class ProjectileData : MonoBehaviour
     public bool isLingering()
     {
         return lingering;
-    }
-
-    public void DestroyBullet(float delay)
-    {
-        Destroy(bulletTrail);
-        Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D col)
