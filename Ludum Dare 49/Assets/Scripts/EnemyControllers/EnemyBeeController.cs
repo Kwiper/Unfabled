@@ -55,7 +55,7 @@ public class EnemyBeeController : MonoBehaviour
 
             }
 
-        } else if (state != EnemyState.Jump){
+        } else if (state != EnemyState.Jump && state != EnemyState.Death){
             randIdleTime = Random.Range(0f, idleTime);
             enemyManager.setState(EnemyState.Idle);
         }
