@@ -434,7 +434,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -917,6 +917,7 @@ GameObject:
   - component: {fileID: 2071399363}
   - component: {fileID: 2071399362}
   - component: {fileID: 2071399361}
+  - component: {fileID: 2071399366}
   m_Layer: 5
   m_Name: Survival
   m_TagString: Untagged
@@ -1037,6 +1038,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2071399359}
   m_CullTransparentMesh: 1
+--- !u!114 &2071399366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2071399359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a165125c42d8dec4db1e1536a1d8e61e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  survival: {fileID: 2071399364}
+  survivalHover: {fileID: 2071399361}
 --- !u!1 &2126020527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,7 +1116,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 1
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
