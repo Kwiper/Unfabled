@@ -34,6 +34,7 @@ public class EnemyMonkeyController : MonoBehaviour
     void Update()
     {
         EnemyState state = enemyManager.getState();
+        currentAnim.HandleUpdate();
 
         if(state == EnemyState.Moving){
             enemyManager.setState(EnemyState.Idle);

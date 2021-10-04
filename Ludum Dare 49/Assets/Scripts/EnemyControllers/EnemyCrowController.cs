@@ -33,6 +33,7 @@ public class EnemyCrowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentAnim.HandleUpdate();
         
         if(enemyManager.getState() == EnemyState.Moving){
             if(enemyManager.timeSinceLastChange > moveTime){

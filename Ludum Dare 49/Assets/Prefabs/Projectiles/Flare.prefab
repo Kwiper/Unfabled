@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 52b115e580bccf94f862f774ce63bbe9, type: 3}
   m_Color: {r: 0.8, g: 0.77817494, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -153,7 +153,10 @@ MonoBehaviour:
   applyPhysics: 0
   bounce: 0
   goThroughGround: 0
+  keepRotation: 0
+  toDestroy: 0
   bounceSource: {fileID: 0}
+  bounceEffect: {fileID: 0}
 --- !u!114 &8105683024018522064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +170,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 5149017241208915091, guid: 0c847c28ae59aa340985513250d97964, type: 3}
+  flareAnim:
+  - {fileID: 21300000, guid: 52b115e580bccf94f862f774ce63bbe9, type: 3}
+  - {fileID: 21300000, guid: ecb52a1cadaf8bd449e8187ab3e44a80, type: 3}
+  - {fileID: 21300000, guid: 7346ef98a5e881643813df05d383fd99, type: 3}
+  - {fileID: 21300000, guid: ecb52a1cadaf8bd449e8187ab3e44a80, type: 3}
+  spriteRenderer: {fileID: 8858315118516285605}
 --- !u!114 &-211412971772923172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +191,9 @@ MonoBehaviour:
   damage: 0
   knockback: 0
   lingering: 0
+  toDestroy: 0
+  hitEffect: {fileID: 0}
+  castEffect: {fileID: 0}
 --- !u!82 &-2850520219576517240
 AudioSource:
   m_ObjectHideFlags: 0
