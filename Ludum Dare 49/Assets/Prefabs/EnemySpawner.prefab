@@ -50,8 +50,8 @@ MonoBehaviour:
   guardEnemy: {fileID: 7225335219217342440, guid: 2b3c1ed1ec998984fa6fa769288700d5, type: 3}
   level: 1
   levelIncreasePeriods:
-  - 20
-  - 20
-  - 40
+  - 12
+  - 12
+  - 15
   - 10
   infinite: 0

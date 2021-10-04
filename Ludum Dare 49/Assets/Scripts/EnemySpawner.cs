@@ -43,16 +43,16 @@ public class EnemySpawner : MonoBehaviour
         //set infinite = playerpref here
 
         EnemyWave[] level0 = new EnemyWave[]{
-            new EnemyWave(3, 1, () => spawnGuardSwarm(1)),
+            new EnemyWave(0, 5, () => spawnGuardSwarm(1)),
         };
 
         EnemyWave[] level1 = new EnemyWave[]{
-            new EnemyWave(3, 1, () => spawnHoneyBear(1)),
+            new EnemyWave(2, 12, () => spawnMonkeyBear(2)),
         };
 
         EnemyWave[] level2 = new EnemyWave[]{
-            new EnemyWave(1, 6, () => spawnGuardSwarm(2)),
-            new EnemyWave(1, 10, () => spawnBearSwarm(1)),
+            new EnemyWave(1, 4, () => spawnBeeSwarm(2)),
+            new EnemyWave(1, 4, () => spawnCrowSwarm(2)),
         };
 
         EnemyWave[] level3 = new EnemyWave[]{
@@ -263,5 +263,10 @@ public class EnemySpawner : MonoBehaviour
         guard.GetComponent<EnemyManager>().baseSpeed = 0.6f;
 
         spawnMonkeySwarm(monkeyCount);
+    }
+
+    public void spawnMonkeyBear(int count){
+        spawnMonkeySwarm(count);
+        spawnTimedGroupEnemy(bearEnemy, new Vector2(10, 0), count, 4f);
     }
 }
