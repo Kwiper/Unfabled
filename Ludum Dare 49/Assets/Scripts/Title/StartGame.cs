@@ -8,6 +8,7 @@ public class StartGame : MonoBehaviour
 
     OnHover hover;
     [SerializeField] bool setInfinite;
+    [SerializeField] bool retainState;
     int setInfInt;
 
     // Start is called before the first frame update
@@ -22,6 +23,7 @@ public class StartGame : MonoBehaviour
     {
         if (hover.GetMouseHover()) {
             if (Input.GetMouseButtonUp(0)) {
+                if(!retainState) PlayerPrefs.DeleteAll();
                 PlayerPrefs.SetInt("Infinite", setInfInt);
                 SceneManager.LoadScene(1);
             }

@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
         {
             if (Input.GetMouseButtonUp(0))
             {
+                PlayerPrefs.DeleteAll();
                 SceneManager.LoadScene(0);
             }
         }

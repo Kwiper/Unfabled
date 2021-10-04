@@ -172,6 +172,7 @@ MonoBehaviour:
   menu: {fileID: 1589723372}
   restartHover: {fileID: 976429434}
   menuHover: {fileID: 1589723367}
+  infinite: 0
 --- !u!114 &170048670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6946,6 +6947,10 @@ PrefabInstance:
       propertyPath: hpBar
       value: 
       objectReference: {fileID: 605259495}
+    - target: {fileID: 6473123025691563605, guid: 85b4e9a15065e9f438f2b8a44a973979, type: 3}
+      propertyPath: health
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 6473123026457495010, guid: 85b4e9a15065e9f438f2b8a44a973979, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -7648,6 +7653,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4792608246295846596, guid: 24b39e483dd531a4f9d364c000a528a9, type: 3}
+      propertyPath: timer
+      value: 
+      objectReference: {fileID: 2071057294}
+    - target: {fileID: 4792608246295846596, guid: 24b39e483dd531a4f9d364c000a528a9, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1916461856}
     - target: {fileID: 7195708260503685011, guid: 24b39e483dd531a4f9d364c000a528a9, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
