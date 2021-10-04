@@ -49,4 +49,9 @@ MonoBehaviour:
   crowEnemy: {fileID: 1433286044023370846, guid: af6657fd916161c4e801e4738b1a05d2, type: 3}
   guardEnemy: {fileID: 7225335219217342440, guid: 2b3c1ed1ec998984fa6fa769288700d5, type: 3}
   level: 1
-  levelIncreasePeriod: 20
+  levelIncreasePeriods:
+  - 20
+  - 20
+  - 40
+  - 10
+  infinite: 0
