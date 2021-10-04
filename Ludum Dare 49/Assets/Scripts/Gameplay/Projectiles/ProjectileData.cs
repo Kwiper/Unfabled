@@ -10,7 +10,7 @@ public class ProjectileData : MonoBehaviour
     public bool toDestroy = false;
 
     //particles
-    [SerializeField] ParticleSystem hitEffect;
+    [SerializeField] GameObject hitEffect;
     [SerializeField] GameObject castEffect;
 
     private GameObject cast;
@@ -46,7 +46,9 @@ public class ProjectileData : MonoBehaviour
     {
         if (col.gameObject.tag == "Enemy")
         {
-            //collision.gameObject.GetComponentInParent<Enemy>().TakeDamage(damage); //enemy takes damage
+            GameObject hit;
+            hit = Instantiate(hitEffect, col.gameObject.transform);
+            hit.SetActive(true);
         }
     }
 }
