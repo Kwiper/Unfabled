@@ -34,15 +34,18 @@ public class EnemySpawner : MonoBehaviour
     private EnemyWave currentWave;
     private EnemyWave nextWave;
 
+    public bool infinite;
+
     void Start()
     {
+        //set infinite = playerpref here
+
         EnemyWave[] level0 = new EnemyWave[]{
-            new EnemyWave(7, 1, () => spawnGuardSwarm(1)),
+            new EnemyWave(3, 1, () => spawnGuardSwarm(1)),
         };
 
         EnemyWave[] level1 = new EnemyWave[]{
-            new EnemyWave(1, 7, () => spawnGuardSwarm(2)),
-            new EnemyWave(1, 7, () => spawnMonkeySwarm(1)),
+            new EnemyWave(3, 1, () => spawnHoneyBear(1)),
         };
 
         EnemyWave[] level2 = new EnemyWave[]{
@@ -71,7 +74,73 @@ public class EnemySpawner : MonoBehaviour
             new EnemyWave(1, 7, () => spawnGuardChasing(2)),
         };
 
-        waves = new EnemyWave[][]{level0, level1, level2, level3, level4, level5};
+        EnemyWave[] level6 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] level7 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] level8 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] level9 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] level10 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] level11 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] level12 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] level13 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] level14 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] level15 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] level16 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] level17 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] level18 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] level19 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] level20 = new EnemyWave[]{
+
+        };
+
+        EnemyWave[] levelInfinite = new EnemyWave[]{
+
+        };
+
+        waves = new EnemyWave[][]{level0, level1, level2, level3, level4, level5, level6,
+            level7, level8, level9, level10, level11, level12, level13, level14, level15,
+            level16, level17, level18, level19, level20, levelInfinite};
 
         currentWave = level0[Random.Range(0, level0.Length)];
         nextWave = level0[Random.Range(0, level0.Length)];
@@ -86,6 +155,7 @@ public class EnemySpawner : MonoBehaviour
 
         
         level = Mathf.Min( Mathf.FloorToInt(spawnerLifetime / levelIncreasePeriod), waves.Length - 1);
+        if (level >= waves.Length - 1 && !infinite) { } //set up end screen here
 
 
         if(timeSinceSpawn >= currentWave.delayEnd + nextWave.delayStart){
