@@ -21,6 +21,8 @@ public class DeathScreen : MonoBehaviour
     string minutes;
     string seconds;
 
+    public bool infinite;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,8 @@ public class DeathScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        infinite = PlayerPrefs.GetInt("Infinite", 0) == 1;
+
         if (player.Health <= 0) {
             minutes = timer.minutes;
             seconds = timer.seconds;
@@ -41,7 +45,10 @@ public class DeathScreen : MonoBehaviour
                 objectsToTurnOn[i].gameObject.SetActive(true);
             }
 
-            timerText.text = "You survived for " + minutes + ":" + seconds;
+            if (infinite)
+            {
+                timerText.text = "You survived for " + minutes + ":" + seconds;
+            }
 
             restart.color = new Color(restartHover.RGB, restartHover.RGB, restartHover.RGB);
             menu.color = new Color(menuHover.RGB, menuHover.RGB, menuHover.RGB);

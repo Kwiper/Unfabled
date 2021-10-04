@@ -65,6 +65,10 @@ public class PlayerController : MonoBehaviour
     - Instantiate the spell
     */
 
+    [SerializeField] AudioSource audio;
+    [SerializeField] AudioClip openMenu;
+    [SerializeField] AudioClip fail;
+
     PlayerState playerState; // Gets the player state enum
 
     private void Awake()
@@ -96,6 +100,9 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Switching to spell choosing state");
                 menuCanvas.gameObject.SetActive(true);
 
+                audio.clip = openMenu;
+                audio.Play();
+
                 trigger1 = null;
                 trigger2 = null;
 
@@ -124,6 +131,8 @@ public class PlayerController : MonoBehaviour
             {
 
                 health -= 2f;
+                audio.clip = fail;
+                audio.Play();
                 menuCanvas.gameObject.SetActive(false);
                 Debug.Log("Switching to Buffer state");
                 bufferTime = bufferMaxTime;
