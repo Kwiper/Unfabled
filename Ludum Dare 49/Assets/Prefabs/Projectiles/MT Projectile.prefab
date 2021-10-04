@@ -9839,8 +9839,8 @@ MonoBehaviour:
   knockback: 8
   lingering: 0
   toDestroy: 0
-  hitEffect: {fileID: 0}
-  castEffect: {fileID: 0}
+  hitEffect: {fileID: 6252141743589796749}
+  castEffect: {fileID: 917859407889541245}
 --- !u!1 &6252141743589796749
 GameObject:
   m_ObjectHideFlags: 0

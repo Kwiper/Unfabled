@@ -174,8 +174,8 @@ MonoBehaviour:
   knockback: 8
   lingering: 0
   toDestroy: 0
-  hitEffect: {fileID: 0}
-  castEffect: {fileID: 0}
+  hitEffect: {fileID: 9065942860892837638}
+  castEffect: {fileID: 4820131014555896752}
 --- !u!82 &296404549262496825
 AudioSource:
   m_ObjectHideFlags: 0

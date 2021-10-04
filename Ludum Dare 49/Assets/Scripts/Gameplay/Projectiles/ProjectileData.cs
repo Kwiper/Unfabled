@@ -18,8 +18,11 @@ public class ProjectileData : MonoBehaviour
     void Start()
     {
         //if (bulletTrail != null) bulletTrail.Play();
-        if (castEffect != null) cast = Instantiate(castEffect, GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().getFirePoint());
-        cast.SetActive(true);
+        if (castEffect != null)
+        {
+            cast = Instantiate(castEffect, GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().getFirePoint());
+            cast.SetActive(true);
+        }
     }
 
     void FixedUpdate()

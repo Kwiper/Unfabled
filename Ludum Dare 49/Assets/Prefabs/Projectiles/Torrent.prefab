@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6872044146443191676}
   - component: {fileID: 9197977455434920026}
+  - component: {fileID: 2959380234659416255}
   m_Layer: 0
   m_Name: Torrent
   m_TagString: Untagged
@@ -45,3 +46,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toFire: {fileID: 24227340678687348, guid: d0310a33e78c5a044a364b706b99e85f, type: 3}
   delay: 0.07
+--- !u!114 &2959380234659416255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6872044146443191679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fda37d450f0e88478d857bec06703f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

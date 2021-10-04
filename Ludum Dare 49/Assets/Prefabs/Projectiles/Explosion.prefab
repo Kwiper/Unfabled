@@ -153,6 +153,10 @@ MonoBehaviour:
   applyPhysics: 0
   bounce: 0
   goThroughGround: 1
+  keepRotation: 1
+  toDestroy: 0
+  bounceSource: {fileID: 0}
+  bounceEffect: {fileID: 0}
 --- !u!114 &3588699648767375225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +185,9 @@ MonoBehaviour:
   damage: 15
   knockback: 8
   lingering: 1
+  toDestroy: 0
+  hitEffect: {fileID: 0}
+  castEffect: {fileID: 0}
 --- !u!82 &7051326226129086159
 AudioSource:
   m_ObjectHideFlags: 0

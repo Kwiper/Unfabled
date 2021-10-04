@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] bool applyPhysics;
     [SerializeField] bool bounce;
     [SerializeField] bool goThroughGround;
+    [SerializeField] bool keepRotation;
     public bool toDestroy;
 
     [SerializeField] AudioSource bounceSource;
@@ -37,8 +38,12 @@ public class Bullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (!keepRotation)
+        {
+            float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+        else transform.rotation = Quaternion.AngleAxis(0, Vector3.forward);
         if (toDestroy) Destroy(gameObject);
     }
 
